@@ -154,6 +154,14 @@ module.exports = [
         "clobbers": [
             "universalLinks"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-facebook4/www/facebook-browser.js",
+        "id": "cordova-plugin-facebook4.FacebookConnectPluginBrowser",
+        "pluginId": "cordova-plugin-facebook4",
+        "clobbers": [
+            "facebookConnectPlugin"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -172,7 +180,8 @@ module.exports.metadata =
     "cordova-plugin-splashscreen": "4.0.3",
     "cordova-plugin-statusbar": "2.2.3",
     "cordova-plugin-whitelist": "1.3.2",
-    "cordova-universal-links-plugin": "1.2.1"
+    "cordova-universal-links-plugin": "1.2.1",
+    "cordova-plugin-facebook4": "1.9.1"
 }
 // BOTTOM OF METADATA
 });

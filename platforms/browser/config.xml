@@ -13,7 +13,7 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <universal-links>
-        <host name="y35n4.app.goo.gl" scheme="https" />
+        <host name="https://y35n4.app.goo.gl" scheme="https" />
         <host name="davisdragons-b41c9.firebaseapp.com" scheme="https">
             <path url="/__/auth/callback" />
         </host>

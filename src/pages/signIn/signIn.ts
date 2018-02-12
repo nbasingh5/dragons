@@ -4,9 +4,7 @@ import { GooglePlus } from '@ionic-native/google-plus';
 import { AngularFireAuth } from 'angularfire2/auth';
 import {AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2/database';
 
-import { Facebook} from "@ionic-native/facebook";
-
-import * as firebase from 'firebase';
+import { Facebook, FacebookLoginResponse} from "@ionic-native/facebook";
 
 import { HomePage } from '../home/home';
 import { MyApp } from '../../app/app.component';
@@ -14,6 +12,7 @@ import { MyApp } from '../../app/app.component';
 import { GetterPage } from '../getter/getter';
 import { AddPage } from '../add/add';
 import { SearchPage } from '../Search/search';
+import * as firebase from "firebase/app";
 
 @Component({
   selector: 'page-signIn',
@@ -35,7 +34,8 @@ export class SignInPage {
 
     userProf:any = null;
 
-	constructor(public navCtrl: NavController, private database: AngularFireDatabase, public navParams: NavParams, public googleplus: GooglePlus, public platform: Platform, private data: AngularFireDatabase, public facebook: Facebook) {
+	constructor(public navCtrl: NavController, private database: AngularFireDatabase, public navParams: NavParams, public googleplus: GooglePlus,
+                public platform: Platform, private data: AngularFireDatabase, private facebook: Facebook) {
 		this.fireauth.onAuthStateChanged( user => {
 			if (user){
 				this.userProfile = user;
@@ -66,6 +66,7 @@ export class SignInPage {
 			 this.fireauth.signInWithCredential(firecreds).then((res) => {
 				  //alert("Firebase success: " + JSON.stringify(res));
 				  this.check(this.userProfile);
+
                  	//this.goToAdd(this.userProfile);
 
 				}).catch((err) => {
@@ -110,42 +111,100 @@ export class SignInPage {
 		//this.data.object('/ClubParams/AccessLevel/' + SignInPage.jersey_num + "/").subscribe(data => console.log("Value: " + data))
 	}
 
+
 	login(){
 
-        this.facebook.login(['email']).then(res =>{
-            const fb = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken)
-            firebase.auth().signInWithCredential(fb).then(fs=>{
-                alert("firebase sec")
+        this.facebook.login(['public_profile', 'user_friends', 'email'])
+            .then((res: FacebookLoginResponse) => console.log('Logged into Facebook!'+ JSON.stringify(res), this.userProf = res))
+            .catch(e => console.log('Error logging into Facebook', e));
 
-            }).catch(ferr=>{
-                alert("firebase err ")
+        alert("new"+this.userProf);
+
+
+    }
+
+    login5(){
+	    this.facebook.login(["email"]).then((loginResponse) =>{
+
+            let cred = firebase.auth.FacebookAuthProvider.credential(loginResponse.authResponse.accessToken);
+            //alert("saaaaaaaaaaaaaaa "+ JSON.stringify(cred));
+	        firebase.auth().signInWithCredential(cred).then((info)=> {
+	                this.userProf  = info;
+                    console.log("heAAAAAAAAAAAAAAYYYYYYYYYYYYYYYYYY "+ info.emailId);
+                    alert(JSON.stringify(info.name));
+                this.navCtrl.push(AddPage, {playerInfo: this.userProfile});
+
+            }).catch(function (error) {
+                console.log("nooooooooooooooooooo" + JSON.stringify(error.name));
 
             })
-
-
-        }).catch(err =>{
-
-            alert(JSON.stringify(err ))
-
         })
-	}
+
+
+
+    }
 
 	login2(){
         var provider = new firebase.auth.FacebookAuthProvider();
 
-        firebase.auth().signInWithRedirect(provider).then(()=> {
-            firebase.auth().getRedirectResult().then((result)=> {
+        firebase.auth().signInWithRedirect(provider).then(()=>{
+            firebase.auth().getRedirectResult().then((result)=>{
                 alert(JSON.stringify(result));
             }).catch(function (error) {
-
-            	alert(JSON.stringify(error));
+                alert(JSON.stringify(error))
             })
+        })
 
 
-			})
+    }
 
 
-        console.log("login 2");
+    login3(){
+        var provider = new firebase.auth.FacebookAuthProvider();
+
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+
+            alert(JSON.stringify(result));
+            // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+            var token = result.credential.accessToken;
+            // The signed-in user info.
+
+            var user = result.user;
+            this.userProf = user;
+
+            // ...
+
+        }).catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.name;
+            var errorMessage = error.message;
+            // The email of the user's account used.
+            var email = error.message;
+            // The firebase.auth.AuthCredential type that was used.
+            var credential = error.stack;
+            // ...
+        });
+    }
+
+    login4(){
+
+        var provider = new firebase.auth.FacebookAuthProvider();
+
+        firebase.auth().signInWithRedirect(provider);
+
+        firebase.auth().getRedirectResult().then(function(result) {
+            if (result.credential) {
+                // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+                var token = result.credential.accessToken;
+                // ...
+            }
+            // The signed-in user info.
+            var user = result.user;
+        }).catch(function(error) {
+        });
+
+
+
 
 	}
 

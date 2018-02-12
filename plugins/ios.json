@@ -47,6 +47,11 @@
     },
     "cordova-universal-links-plugin": {
       "PACKAGE_NAME": "org.cricket.davisdragons"
+    },
+    "cordova-plugin-facebook4": {
+      "APP_ID": "1920354821612218",
+      "APP_NAME": "davisdragons",
+      "PACKAGE_NAME": "org.cricket.davisdragons"
     }
   },
   "dependent_plugins": {

@@ -35,6 +35,9 @@ export class AddPage {
         //this.player.picture = user.photoURL;
         //this.player.picture = null;
 
+        console.log("heyyyyyyyyyyyyyyyyyyyYYYYYYYYYYYYYYYYYY "+ user.email);
+        alert("heyyyyyyyyyyyyyyyyyyyYYYYYYYYYYYYYYYYYY "+ user.email);
+
         this.player.picture = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Iverson_from_behind.jpg/180px-Iverson_from_behind.jpg";
         this.player.email= "nbadavis@gmail.com";
 

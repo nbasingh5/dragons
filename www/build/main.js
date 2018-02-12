@@ -62,7 +62,7 @@ var SpectatorPage = (function () {
     return SpectatorPage;
 }());
 SpectatorPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/Users/Aman/Desktop/davisdragons/src/pages/spectator/spectator.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <div text-center *ngFor ="let item of matchStats$ | async; let i = index; let lst = last">\n    		<ion-title *ngIf="i == 1">{{item.totalRuns}} / {{item.totalWickets}} ({{item.totalOvers}})</ion-title>\n    </div>\n  </ion-navbar>\n  <ion-toolbar no-border-top>\n      <ion-segment [(ngModel)]="roster">\n        <ion-segment-button value="Home">\n          Home\n        </ion-segment-button>\n        <ion-segment-button value="vs.">\n          vs.\n        </ion-segment-button>\n        <ion-segment-button value="Away">\n          Away\n        </ion-segment-button>\n      </ion-segment>\n    </ion-toolbar>\n</ion-header>\n<ion-content>\n  <div [ngSwitch]="roster">\n    <div *ngSwitchCase="\'Home\'">\n        <ion-item *ngFor="let items of playersTeamA$ | async;">\n        <h2>{{items.$key}} Number: {{items.$value}}</h2>\n      </ion-item>\n    </div>\n\n    <ion-list *ngSwitchCase="\'vs.\'">\n      <div *ngFor ="let item of matchStats$ | async; let i = index; let lst = last">\n      <ion-grid>\n      <ion-row>\n    		<ion-col>\n			<h2 text-center *ngIf="i == 1">| Runs |</h2>\n		</ion-col>\n		<ion-col>\n    		    <h2 text-center *ngIf="i == 1">| Wickets |</h2>\n		</ion-col>\n		<ion-col>\n    		    <h2 text-center *ngIf="i == 1">| Overs |</h2>\n		</ion-col>\n	  </ion-row>\n      <ion-row>\n    		<ion-col>\n			<h2  text-center *ngIf="i == 1">{{item.totalRuns}}</h2>\n		</ion-col>\n		<ion-col>\n    		    <h2 text-center *ngIf="i == 1">{{item.totalWickets}}</h2>\n		</ion-col>\n		<ion-col>\n    		    <h2 text-center *ngIf="i == 1">{{item.totalOvers}}</h2>\n		</ion-col>\n	  </ion-row>\n    </ion-grid>\n      </div>\n    <div *ngFor ="let item of scoreRef$ | async; let i = index; let lst = last">\n          <h2 *ngIf="i==lst">Next Ball: {{ item.$value }}</h2>\n    </div>\n    </ion-list>\n\n    <ion-list *ngSwitchCase="\'Away\'">\n      <ion-item *ngFor="let items of playersTeamB$ | async;">\n        <h2>{{items.$key}} Number: {{items.$value}}</h2>\n      </ion-item>\n    </ion-list>\n  </div>\n</ion-content>\n\n\n\n<!--ion-content padding class="action-sheets-basic-page">\n\n  <button ion-button block (click)="openMenu()">\n    Show Action Sheet\n  </button>\n</ion-content !-->\n'/*ion-inline-end:"/Users/Aman/Desktop/davisdragons/src/pages/spectator/spectator.html"*/,
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/Users/Aman/Desktop/dragons1/src/pages/spectator/spectator.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <div text-center *ngFor ="let item of matchStats$ | async; let i = index; let lst = last">\n    		<ion-title *ngIf="i == 1">{{item.totalRuns}} / {{item.totalWickets}} ({{item.totalOvers}})</ion-title>\n    </div>\n  </ion-navbar>\n  <ion-toolbar no-border-top>\n      <ion-segment [(ngModel)]="roster">\n        <ion-segment-button value="Home">\n          Home\n        </ion-segment-button>\n        <ion-segment-button value="vs.">\n          vs.\n        </ion-segment-button>\n        <ion-segment-button value="Away">\n          Away\n        </ion-segment-button>\n      </ion-segment>\n    </ion-toolbar>\n</ion-header>\n<ion-content>\n  <div [ngSwitch]="roster">\n    <div *ngSwitchCase="\'Home\'">\n        <ion-item *ngFor="let items of playersTeamA$ | async;">\n        <h2>{{items.$key}} Number: {{items.$value}}</h2>\n      </ion-item>\n    </div>\n\n    <ion-list *ngSwitchCase="\'vs.\'">\n      <div *ngFor ="let item of matchStats$ | async; let i = index; let lst = last">\n      <ion-grid>\n      <ion-row>\n    		<ion-col>\n			<h2 text-center *ngIf="i == 1">| Runs |</h2>\n		</ion-col>\n		<ion-col>\n    		    <h2 text-center *ngIf="i == 1">| Wickets |</h2>\n		</ion-col>\n		<ion-col>\n    		    <h2 text-center *ngIf="i == 1">| Overs |</h2>\n		</ion-col>\n	  </ion-row>\n      <ion-row>\n    		<ion-col>\n			<h2  text-center *ngIf="i == 1">{{item.totalRuns}}</h2>\n		</ion-col>\n		<ion-col>\n    		    <h2 text-center *ngIf="i == 1">{{item.totalWickets}}</h2>\n		</ion-col>\n		<ion-col>\n    		    <h2 text-center *ngIf="i == 1">{{item.totalOvers}}</h2>\n		</ion-col>\n	  </ion-row>\n    </ion-grid>\n      </div>\n    <div *ngFor ="let item of scoreRef$ | async; let i = index; let lst = last">\n          <h2 *ngIf="i==lst">Next Ball: {{ item.$value }}</h2>\n    </div>\n    </ion-list>\n\n    <ion-list *ngSwitchCase="\'Away\'">\n      <ion-item *ngFor="let items of playersTeamB$ | async;">\n        <h2>{{items.$key}} Number: {{items.$value}}</h2>\n      </ion-item>\n    </ion-list>\n  </div>\n</ion-content>\n\n\n\n<!--ion-content padding class="action-sheets-basic-page">\n\n  <button ion-button block (click)="openMenu()">\n    Show Action Sheet\n  </button>\n</ion-content !-->\n'/*ion-inline-end:"/Users/Aman/Desktop/dragons1/src/pages/spectator/spectator.html"*/,
         selector: 'spectator.scss'
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */],
@@ -207,7 +207,7 @@ var CreatePage = (function () {
 }());
 CreatePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-create',template:/*ion-inline-start:"/Users/Aman/Desktop/davisdragons/src/pages/createMatch/createMatch.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu" ></ion-icon>\n        </button>\n        <ion-title class="bar">Create</ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n    <ion-fab right bottom>\n        <button ion-fab color="white"><ion-icon name="add"></ion-icon></button>\n    </ion-fab>\n    <ion-list>\n        <ion-list-header text-center class="headfont"> Create Match </ion-list-header>\n        <ion-item>\n            <ion-label floating>Match Key</ion-label>\n            <ion-input type="text"[(ngModel)] = "key.MatchKey"></ion-input>\n        </ion-item>\n\n        <ion-item>\n                <ion-label floating>Overs</ion-label>\n                <ion-input type="text"[(ngModel)] = "score.numOfOvers"></ion-input>\n        </ion-item>\n\n        <ion-item>\n            <ion-label floating>Umpire</ion-label>\n            <ion-input type="text"[(ngModel)] = "captains.umpire"></ion-input>\n        </ion-item>\n\n\n        <ion-item>\n            <ion-label floating>Home Team Captain Jersey Number</ion-label>\n            <ion-input type="text"[(ngModel)] = "captains.Homecaptain"></ion-input>\n        </ion-item>\n\n        <ion-item>\n            <ion-label floating>Away Team Captain JerseyNumber</ion-label>\n            <ion-input type="text"[(ngModel)] = "captains.Awaycaptain"></ion-input>\n        </ion-item>\n\n        <ion-item>\n            <ion-label floating>How many players</ion-label>\n            <ion-input type="text"[(ngModel)] = "key.numPlayers"></ion-input>\n        </ion-item>\n\n\n    </ion-list>\n\n    <div padding>\n        <button ion-button  type="button" (click)="create(key,captains)">Start Match</button>\n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/Aman/Desktop/davisdragons/src/pages/createMatch/createMatch.html"*/
+        selector: 'page-create',template:/*ion-inline-start:"/Users/Aman/Desktop/dragons1/src/pages/createMatch/createMatch.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu" ></ion-icon>\n        </button>\n        <ion-title class="bar">Create</ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n    <ion-fab right bottom>\n        <button ion-fab color="white"><ion-icon name="add"></ion-icon></button>\n    </ion-fab>\n    <ion-list>\n        <ion-list-header text-center class="headfont"> Create Match </ion-list-header>\n        <ion-item>\n            <ion-label floating>Match Key</ion-label>\n            <ion-input type="text"[(ngModel)] = "key.MatchKey"></ion-input>\n        </ion-item>\n\n        <ion-item>\n                <ion-label floating>Overs</ion-label>\n                <ion-input type="text"[(ngModel)] = "score.numOfOvers"></ion-input>\n        </ion-item>\n\n        <ion-item>\n            <ion-label floating>Umpire</ion-label>\n            <ion-input type="text"[(ngModel)] = "captains.umpire"></ion-input>\n        </ion-item>\n\n\n        <ion-item>\n            <ion-label floating>Home Team Captain Jersey Number</ion-label>\n            <ion-input type="text"[(ngModel)] = "captains.Homecaptain"></ion-input>\n        </ion-item>\n\n        <ion-item>\n            <ion-label floating>Away Team Captain JerseyNumber</ion-label>\n            <ion-input type="text"[(ngModel)] = "captains.Awaycaptain"></ion-input>\n        </ion-item>\n\n        <ion-item>\n            <ion-label floating>How many players</ion-label>\n            <ion-input type="text"[(ngModel)] = "key.numPlayers"></ion-input>\n        </ion-item>\n\n\n    </ion-list>\n\n    <div padding>\n        <button ion-button  type="button" (click)="create(key,captains)">Start Match</button>\n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/Aman/Desktop/dragons1/src/pages/createMatch/createMatch.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */]])
 ], CreatePage);
@@ -224,7 +224,7 @@ CreatePage = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__show_show__ = __webpack_require__(306);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__show_show__ = __webpack_require__(305);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -271,7 +271,7 @@ var SearchPage = (function () {
 }());
 SearchPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-search',template:/*ion-inline-start:"/Users/Aman/Desktop/davisdragons/src/pages/Search/search.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu" ></ion-icon>\n        </button>\n        <ion-title class="bar">Player Search</ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n    <ion-fab right bottom>\n        <button ion-fab color="white"><ion-icon name="add"></ion-icon></button>\n    </ion-fab>\n    <ion-list>\n        <ion-list-header text-center class="headfont"> Search </ion-list-header>\n        <ion-item>\n            <ion-label floating>Jersey Number</ion-label>\n            <ion-input id ="jr" type="text"[(ngModel)] = "player.Jersey_Number"></ion-input>\n        </ion-item>\n\n\n    </ion-list>\n\n    <div padding>\n        <button ion-button  type="button" (click)="check(player)">Check</button>\n    </div>\n</ion-content>\n\n\n'/*ion-inline-end:"/Users/Aman/Desktop/davisdragons/src/pages/Search/search.html"*/
+        selector: 'page-search',template:/*ion-inline-start:"/Users/Aman/Desktop/dragons1/src/pages/Search/search.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu" ></ion-icon>\n        </button>\n        <ion-title class="bar">Player Search</ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n    <ion-fab right bottom>\n        <button ion-fab color="white"><ion-icon name="add"></ion-icon></button>\n    </ion-fab>\n    <ion-list>\n        <ion-list-header text-center class="headfont"> Search </ion-list-header>\n        <ion-item>\n            <ion-label floating>Jersey Number</ion-label>\n            <ion-input id ="jr" type="text"[(ngModel)] = "player.Jersey_Number"></ion-input>\n        </ion-item>\n\n\n    </ion-list>\n\n    <div padding>\n        <button ion-button  type="button" (click)="check(player)">Check</button>\n    </div>\n</ion-content>\n\n\n'/*ion-inline-end:"/Users/Aman/Desktop/dragons1/src/pages/Search/search.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]])
 ], SearchPage);
@@ -288,7 +288,7 @@ SearchPage = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__AwayTeamMembers_AwayteamMembers__ = __webpack_require__(308);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__AwayTeamMembers_AwayteamMembers__ = __webpack_require__(307);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -391,7 +391,7 @@ var AwayFindPlayerPage = AwayFindPlayerPage_1 = (function () {
 }());
 AwayFindPlayerPage = AwayFindPlayerPage_1 = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-Awayfind',template:/*ion-inline-start:"/Users/Aman/Desktop/davisdragons/src/pages/AwayFindPlayer/AwayFindPlayer.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu" ></ion-icon>\n        </button>\n        <ion-title class="bar">Player Search</ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n    <ion-fab right bottom>\n        <button ion-fab color="white"><ion-icon name="add"></ion-icon></button>\n    </ion-fab>\n    <ion-list>\n        <ion-list-header text-center class="headfont"> Search Away </ion-list-header>\n        <ion-item>\n            <ion-label floating>Jersey Number</ion-label>\n            <ion-input id ="jr" type="text"[(ngModel)] = "SidePlayer.Jersey_Number"></ion-input>\n        </ion-item>\n\n\n    </ion-list>\n\n    <div padding>\n        <button ion-button  type="button" (click)="check(SidePlayer)">Check</button>\n        <button ion-button  type="button" (click)="reload()">Reload</button>\n\n    </div>\n\n\n\n    <ion-grid>\n        <ion-row>\n            <ion-col col-6 col-md-4 col-xl-3 *ngFor ="let item of AwayChecker" >\n                <div class="card toty fifa17">\n                    <div class="player">\n                        <img src="assets/img/Player_Profile.jpg" id="player-card">\n\n                        <div class="avatarholder" >\n                            <img src= {{item.picture}}>\n                        </div>\n                        <div class=" name">\n                            <span class="marquee">{{item.FirstName}}</span>\n                        </div>\n                        <div class="attributes ">\n            <span class="loyalty">\n            </span>\n                            <span class="runs">{{item.runs}}</span>\n                            <span class="wickets">{{item.wickets}}</span>\n                            <span class="highestScore">{{item.highscore}}</span>\n                            <span class="average">{{item.strikeRate}}</span>\n                            <span class="four">{{item.fours}}</span>\n                            <span class="six">{{item.sixes}}</span>\n\n                        </div>\n                    </div>\n                </div>\n            </ion-col>\n        </ion-row>\n    </ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"/Users/Aman/Desktop/davisdragons/src/pages/AwayFindPlayer/AwayFindPlayer.html"*/
+        selector: 'page-Awayfind',template:/*ion-inline-start:"/Users/Aman/Desktop/dragons1/src/pages/AwayFindPlayer/AwayFindPlayer.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu" ></ion-icon>\n        </button>\n        <ion-title class="bar">Player Search</ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n    <ion-fab right bottom>\n        <button ion-fab color="white"><ion-icon name="add"></ion-icon></button>\n    </ion-fab>\n    <ion-list>\n        <ion-list-header text-center class="headfont"> Search Away </ion-list-header>\n        <ion-item>\n            <ion-label floating>Jersey Number</ion-label>\n            <ion-input id ="jr" type="text"[(ngModel)] = "SidePlayer.Jersey_Number"></ion-input>\n        </ion-item>\n\n\n    </ion-list>\n\n    <div padding>\n        <button ion-button  type="button" (click)="check(SidePlayer)">Check</button>\n        <button ion-button  type="button" (click)="reload()">Reload</button>\n\n    </div>\n\n\n\n    <ion-grid>\n        <ion-row>\n            <ion-col col-6 col-md-4 col-xl-3 *ngFor ="let item of AwayChecker" >\n                <div class="card toty fifa17">\n                    <div class="player">\n                        <img src="assets/img/Player_Profile.jpg" id="player-card">\n\n                        <div class="avatarholder" >\n                            <img src= {{item.picture}}>\n                        </div>\n                        <div class=" name">\n                            <span class="marquee">{{item.FirstName}}</span>\n                        </div>\n                        <div class="attributes ">\n            <span class="loyalty">\n            </span>\n                            <span class="runs">{{item.runs}}</span>\n                            <span class="wickets">{{item.wickets}}</span>\n                            <span class="highestScore">{{item.highscore}}</span>\n                            <span class="average">{{item.strikeRate}}</span>\n                            <span class="four">{{item.fours}}</span>\n                            <span class="six">{{item.sixes}}</span>\n\n                        </div>\n                    </div>\n                </div>\n            </ion-col>\n        </ion-row>\n    </ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"/Users/Aman/Desktop/dragons1/src/pages/AwayFindPlayer/AwayFindPlayer.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]])
 ], AwayFindPlayerPage);
@@ -435,22 +435,22 @@ webpackEmptyAsyncContext.id = 208;
 
 /***/ }),
 
-/***/ 301:
+/***/ 300:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SignInPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_google_plus__ = __webpack_require__(302);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_google_plus__ = __webpack_require__(301);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_facebook__ = __webpack_require__(248);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_firebase__ = __webpack_require__(254);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_firebase__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__home_home__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__getter_getter__ = __webpack_require__(305);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__add_add__ = __webpack_require__(91);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Search_search__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__home_home__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__getter_getter__ = __webpack_require__(304);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__add_add__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Search_search__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_firebase_app__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_firebase_app___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_firebase_app__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -481,7 +481,7 @@ var SignInPage = SignInPage_1 = (function () {
         this.data = data;
         this.facebook = facebook;
         this.userProfile = null;
-        this.fireauth = __WEBPACK_IMPORTED_MODULE_5_firebase__["auth"]();
+        this.fireauth = __WEBPACK_IMPORTED_MODULE_9_firebase_app__["auth"]();
         this.userProf = null;
         this.fireauth.onAuthStateChanged(function (user) {
             if (user) {
@@ -507,7 +507,7 @@ var SignInPage = SignInPage_1 = (function () {
         }
         this.googleplus.login(clientInfo)
             .then(function (res) {
-            var firecreds = __WEBPACK_IMPORTED_MODULE_5_firebase__["auth"].GoogleAuthProvider.credential(res.idToken);
+            var firecreds = __WEBPACK_IMPORTED_MODULE_9_firebase_app__["auth"].GoogleAuthProvider.credential(res.idToken);
             _this.fireauth.signInWithCredential(firecreds).then(function (res) {
                 //alert("Firebase success: " + JSON.stringify(res));
                 _this.check(_this.userProfile);
@@ -549,27 +549,71 @@ var SignInPage = SignInPage_1 = (function () {
         //this.data.object('/ClubParams/AccessLevel/' + SignInPage.jersey_num + "/").subscribe(data => console.log("Value: " + data))
     };
     SignInPage.prototype.login = function () {
-        this.facebook.login(['email']).then(function (res) {
-            var fb = __WEBPACK_IMPORTED_MODULE_5_firebase__["auth"].FacebookAuthProvider.credential(res.authResponse.accessToken);
-            __WEBPACK_IMPORTED_MODULE_5_firebase__["auth"]().signInWithCredential(fb).then(function (fs) {
-                alert("firebase sec");
-            }).catch(function (ferr) {
-                alert("firebase err ");
+        var _this = this;
+        this.facebook.login(['public_profile', 'user_friends', 'email'])
+            .then(function (res) { return console.log('Logged into Facebook!' + JSON.stringify(res), _this.userProf = res); })
+            .catch(function (e) { return console.log('Error logging into Facebook', e); });
+        alert("new" + this.userProf);
+    };
+    SignInPage.prototype.login5 = function () {
+        var _this = this;
+        this.facebook.login(["email"]).then(function (loginResponse) {
+            var cred = __WEBPACK_IMPORTED_MODULE_9_firebase_app__["auth"].FacebookAuthProvider.credential(loginResponse.authResponse.accessToken);
+            //alert("saaaaaaaaaaaaaaa "+ JSON.stringify(cred));
+            __WEBPACK_IMPORTED_MODULE_9_firebase_app__["auth"]().signInWithCredential(cred).then(function (info) {
+                _this.userProf = info;
+                console.log("heAAAAAAAAAAAAAAYYYYYYYYYYYYYYYYYY " + info.emailId);
+                alert(JSON.stringify(info.name));
+                _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_7__add_add__["a" /* AddPage */], { playerInfo: _this.userProfile });
+            }).catch(function (error) {
+                console.log("nooooooooooooooooooo" + JSON.stringify(error.name));
             });
-        }).catch(function (err) {
-            alert(JSON.stringify(err));
         });
     };
     SignInPage.prototype.login2 = function () {
-        var provider = new __WEBPACK_IMPORTED_MODULE_5_firebase__["auth"].FacebookAuthProvider();
-        __WEBPACK_IMPORTED_MODULE_5_firebase__["auth"]().signInWithRedirect(provider).then(function () {
-            __WEBPACK_IMPORTED_MODULE_5_firebase__["auth"]().getRedirectResult().then(function (result) {
+        var provider = new __WEBPACK_IMPORTED_MODULE_9_firebase_app__["auth"].FacebookAuthProvider();
+        __WEBPACK_IMPORTED_MODULE_9_firebase_app__["auth"]().signInWithRedirect(provider).then(function () {
+            __WEBPACK_IMPORTED_MODULE_9_firebase_app__["auth"]().getRedirectResult().then(function (result) {
                 alert(JSON.stringify(result));
             }).catch(function (error) {
                 alert(JSON.stringify(error));
             });
         });
-        console.log("login 2");
+    };
+    SignInPage.prototype.login3 = function () {
+        var provider = new __WEBPACK_IMPORTED_MODULE_9_firebase_app__["auth"].FacebookAuthProvider();
+        __WEBPACK_IMPORTED_MODULE_9_firebase_app__["auth"]().signInWithPopup(provider).then(function (result) {
+            alert(JSON.stringify(result));
+            // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+            var token = result.credential.accessToken;
+            // The signed-in user info.
+            var user = result.user;
+            this.userProf = user;
+            // ...
+        }).catch(function (error) {
+            // Handle Errors here.
+            var errorCode = error.name;
+            var errorMessage = error.message;
+            // The email of the user's account used.
+            var email = error.message;
+            // The firebase.auth.AuthCredential type that was used.
+            var credential = error.stack;
+            // ...
+        });
+    };
+    SignInPage.prototype.login4 = function () {
+        var provider = new __WEBPACK_IMPORTED_MODULE_9_firebase_app__["auth"].FacebookAuthProvider();
+        __WEBPACK_IMPORTED_MODULE_9_firebase_app__["auth"]().signInWithRedirect(provider);
+        __WEBPACK_IMPORTED_MODULE_9_firebase_app__["auth"]().getRedirectResult().then(function (result) {
+            if (result.credential) {
+                // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+                var token = result.credential.accessToken;
+                // ...
+            }
+            // The signed-in user info.
+            var user = result.user;
+        }).catch(function (error) {
+        });
     };
     SignInPage.prototype.check = function (userprofile) {
         var _this = this;
@@ -587,12 +631,12 @@ var SignInPage = SignInPage_1 = (function () {
             if (data.length == 0 && !userprofile) {
                 alert('User does not exist');
                 console.log(data);
-                _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_8__add_add__["a" /* AddPage */], { playerInfo: userprofile });
+                _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_7__add_add__["a" /* AddPage */], { playerInfo: userprofile });
             }
             else {
                 alert('User does exist');
                 console.log(data);
-                _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_6__home_home__["a" /* HomePage */]);
+                _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_5__home_home__["a" /* HomePage */]);
             }
         });
     };
@@ -605,18 +649,18 @@ var SignInPage = SignInPage_1 = (function () {
         // this.navCtrl.push(MyApp);
     };
     SignInPage.prototype.goTohome = function () {
-        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_6__home_home__["a" /* HomePage */]);
+        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_5__home_home__["a" /* HomePage */]);
     };
     SignInPage.prototype.goToGetter = function () {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_7__getter_getter__["a" /* GetterPage */]);
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_6__getter_getter__["a" /* GetterPage */]);
     };
     SignInPage.prototype.goToAdd = function () {
         //this.userProf.picture = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Iverson_from_behind.jpg/180px-Iverson_from_behind.jpg";
         //this.userProf.email= "nbadavis@gmail.com";
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_8__add_add__["a" /* AddPage */]);
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_7__add_add__["a" /* AddPage */]);
     };
     SignInPage.prototype.goToSearch = function () {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_9__Search_search__["a" /* SearchPage */]);
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_8__Search_search__["a" /* SearchPage */]);
     };
     return SignInPage;
 }());
@@ -624,9 +668,10 @@ SignInPage.jersey_num = 0;
 SignInPage.emailId = "";
 SignInPage = SignInPage_1 = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-signIn',template:/*ion-inline-start:"/Users/Aman/Desktop/davisdragons/src/pages/signIn/signIn.html"*/'<ion-content padding>\n<ion-fab right bottom>\n<button ion-fab color="secondary" large (click)="goTohome()"><ion-icon color="live" name="tennisball"></ion-icon></button>\n</ion-fab>\n\n<div text-center>\n	<img src="assets/img/Welcome.jpg" />\n	<h1 color="secondary"> Davis Dragons®\n	</h1> \n	<h3 color="live"> The Official App for the Cricket Club at UC Davis.\n    </h3>\n\n\n    <button ion-button large  color="danger" round (click)="login2()" >\n       &nbsp; Login with Facebook\n    </button>\n  <ion-item *ngIf="userProfile">\n    <ion-avatar (click)="isloggedin()" item-left>\n      <img [src]="userProfile.photoURL">\n    </ion-avatar>\n    <h2 (click)="isloggedin()">{{ userProfile.displayName }}</h2>\n    <h3>There it is: {{ userProfile.email }}</h3>\n    <ion-icon name="remove" item-right (click)="logout()"></ion-icon>\n  </ion-item>\n</div>\n</ion-content>\n'/*ion-inline-end:"/Users/Aman/Desktop/davisdragons/src/pages/signIn/signIn.html"*/
+        selector: 'page-signIn',template:/*ion-inline-start:"/Users/Aman/Desktop/dragons1/src/pages/signIn/signIn.html"*/'<ion-content padding>\n<ion-fab right bottom>\n<button ion-fab color="secondary" large (click)="goTohome()"><ion-icon color="live" name="tennisball"></ion-icon></button>\n</ion-fab>\n\n<div text-center>\n	<img src="assets/img/Welcome.jpg" />\n	<h1 color="secondary"> Davis Dragons®\n	</h1> \n	<h3 color="live"> The Official App for the Cricket Club at UC Davis.\n    </h3>\n\n\n    <button ion-button large  color="danger" round (click)="login5()" >\n       &nbsp; Login with Facebook\n    </button>\n  <ion-item *ngIf="userProfile">\n    <ion-avatar (click)="isloggedin()" item-left>\n      <img [src]="userProfile.photoURL">\n    </ion-avatar>\n    <h2 (click)="isloggedin()">{{ userProfile.displayName }}</h2>\n    <h3>There it is: {{ userProfile.email }}</h3>\n    <ion-icon name="remove" item-right (click)="logout()"></ion-icon>\n  </ion-item>\n</div>\n</ion-content>\n'/*ion-inline-end:"/Users/Aman/Desktop/dragons1/src/pages/signIn/signIn.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_google_plus__["a" /* GooglePlus */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_facebook__["a" /* Facebook */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_google_plus__["a" /* GooglePlus */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_facebook__["a" /* Facebook */]])
 ], SignInPage);
 
 var SignInPage_1;
@@ -634,7 +679,7 @@ var SignInPage_1;
 
 /***/ }),
 
-/***/ 303:
+/***/ 302:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -698,7 +743,7 @@ var MatchOfflinePage = (function () {
     return MatchOfflinePage;
 }());
 MatchOfflinePage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/Users/Aman/Desktop/davisdragons/src/pages/matchOffline/matchOffline.html"*/'<ion-header>\n        <ion-navbar>\n            <button ion-button menuToggle>\n                <ion-icon name="menu" ></ion-icon>\n            </button>\n        <ion-title class="bar">Match End</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n    <h1>Match Finished!</h1>\n    <div *ngFor ="let item of matchStats$ | async; let i = index;">\n            <h1 padding *ngIf="i == 1"> Final Score<br><br>\n            {{item.totalRuns}} / {{item.totalWickets}} </h1>\n            <h2 padding *ngIf="i == 1">{{item.totalOvers}} overs</h2>\n    </div><br>\n    <button class="buttons"(click)="sendToCreate()">Start a new Match</button><br><br>\n    <button class="buttons"(click)="sendToHome()">Return to Home Page</button>\n</ion-content>\n    '/*ion-inline-end:"/Users/Aman/Desktop/davisdragons/src/pages/matchOffline/matchOffline.html"*/,
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/Users/Aman/Desktop/dragons1/src/pages/matchOffline/matchOffline.html"*/'<ion-header>\n        <ion-navbar>\n            <button ion-button menuToggle>\n                <ion-icon name="menu" ></ion-icon>\n            </button>\n        <ion-title class="bar">Match End</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n    <h1>Match Finished!</h1>\n    <div *ngFor ="let item of matchStats$ | async; let i = index;">\n            <h1 padding *ngIf="i == 1"> Final Score<br><br>\n            {{item.totalRuns}} / {{item.totalWickets}} </h1>\n            <h2 padding *ngIf="i == 1">{{item.totalOvers}} overs</h2>\n    </div><br>\n    <button class="buttons"(click)="sendToCreate()">Start a new Match</button><br><br>\n    <button class="buttons"(click)="sendToHome()">Return to Home Page</button>\n</ion-content>\n    '/*ion-inline-end:"/Users/Aman/Desktop/dragons1/src/pages/matchOffline/matchOffline.html"*/,
         selector: 'matchOffline.scss'
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */],
@@ -711,7 +756,7 @@ MatchOfflinePage = __decorate([
 
 /***/ }),
 
-/***/ 304:
+/***/ 303:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -775,7 +820,7 @@ var ExtrasPage = (function () {
     return ExtrasPage;
 }());
 ExtrasPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/Users/Aman/Desktop/davisdragons/src/pages/extras/extras.html"*/'\n\n<ion-content>\n  <div>\n<button ion-button color="secondary" clear menuToggle>\n  <ion-icon name="menu"></ion-icon>\n</button>\n</div>\n <div class = "actionSheet">\n  <button ion-button block color = "secondary" (click)="openMenu()">\n    Extras\n  </button>\n</div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/Aman/Desktop/davisdragons/src/pages/extras/extras.html"*/
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/Users/Aman/Desktop/dragons1/src/pages/extras/extras.html"*/'\n\n<ion-content>\n  <div>\n<button ion-button color="secondary" clear menuToggle>\n  <ion-icon name="menu"></ion-icon>\n</button>\n</div>\n <div class = "actionSheet">\n  <button ion-button block color = "secondary" (click)="openMenu()">\n    Extras\n  </button>\n</div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/Aman/Desktop/dragons1/src/pages/extras/extras.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */]])
 ], ExtrasPage);
@@ -784,7 +829,7 @@ ExtrasPage = __decorate([
 
 /***/ }),
 
-/***/ 305:
+/***/ 304:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -838,7 +883,7 @@ var GetterPage = (function () {
 }());
 GetterPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-getter',template:/*ion-inline-start:"/Users/Aman/Desktop/davisdragons/src/pages/getter/getter.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu" ></ion-icon>\n        </button>\n        <ion-title class="bar">Home</ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n    <ion-fab right bottom>\n        <button ion-fab color="white"><ion-icon name="add"></ion-icon></button>\n    </ion-fab>\n    <ion-list>\n        <ion-list-header text-center class="headfont"> Check </ion-list-header>\n        <ion-item>\n            <ion-label floating>Email</ion-label>\n            <ion-input id ="jr" type="text"[(ngModel)] = "player.email"></ion-input>\n        </ion-item>\n\n\n    </ion-list>\n\n    <div padding>\n        <button ion-button  type="button" (click)="check(player)">Check</button>\n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/Aman/Desktop/davisdragons/src/pages/getter/getter.html"*/
+        selector: 'page-getter',template:/*ion-inline-start:"/Users/Aman/Desktop/dragons1/src/pages/getter/getter.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu" ></ion-icon>\n        </button>\n        <ion-title class="bar">Home</ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n    <ion-fab right bottom>\n        <button ion-fab color="white"><ion-icon name="add"></ion-icon></button>\n    </ion-fab>\n    <ion-list>\n        <ion-list-header text-center class="headfont"> Check </ion-list-header>\n        <ion-item>\n            <ion-label floating>Email</ion-label>\n            <ion-input id ="jr" type="text"[(ngModel)] = "player.email"></ion-input>\n        </ion-item>\n\n\n    </ion-list>\n\n    <div padding>\n        <button ion-button  type="button" (click)="check(player)">Check</button>\n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/Aman/Desktop/dragons1/src/pages/getter/getter.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */]])
 ], GetterPage);
@@ -847,7 +892,7 @@ GetterPage = __decorate([
 
 /***/ }),
 
-/***/ 306:
+/***/ 305:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -884,7 +929,7 @@ var ShowPage = (function () {
 }());
 ShowPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-show',template:/*ion-inline-start:"/Users/Aman/Desktop/davisdragons/src/pages/show/show.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu" ></ion-icon>\n        </button>\n        <ion-title class="bar">Player Profile</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<body class="player">\n\n\n    <div class="row">\n        <div class="col-md-3">\n            <div style="width: 300px; margin:auto">\n                <div class="card toty fifa17">\n                    <div class="player">\n                        <img src="assets/img/Player_Profile.jpg" id="player-card">\n\n                        <div class="avatarholder" style="width: 115px; resize: horizontal ">\n                            <img src= {{this.name[0].picture}} class="avatar">\n                        </div>\n                        <div class=" name">\n                            <span class="marquee">{{this.name[0].FirstName}}</span>\n                        </div>\n                        <div class="attributes ">\n                            <span class="loyalty">\n                            </span>\n                            <span class="runs">{{this.name[0].runs}}</span>\n                            <span class="wickets">{{this.name[0].wickets}}</span>\n                            <span class="highestScore">{{this.name[0].highscore}}</span>\n                            <span class="average">{{this.name[0].strikeRate}}</span>\n                            <span class="four">{{this.name[0].fours}}</span>\n                            <span class="six">{{this.name[0].sixes}}</span>\n\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n\n        <div style="height: 20px"></div>\n</body>'/*ion-inline-end:"/Users/Aman/Desktop/davisdragons/src/pages/show/show.html"*/
+        selector: 'page-show',template:/*ion-inline-start:"/Users/Aman/Desktop/dragons1/src/pages/show/show.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu" ></ion-icon>\n        </button>\n        <ion-title class="bar">Player Profile</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<body class="player">\n\n\n    <div class="row">\n        <div class="col-md-3">\n            <div style="width: 300px; margin:auto">\n                <div class="card toty fifa17">\n                    <div class="player">\n                        <img src="assets/img/Player_Profile.jpg" id="player-card">\n\n                        <div class="avatarholder" style="width: 115px; resize: horizontal ">\n                            <img src= {{this.name[0].picture}} class="avatar">\n                        </div>\n                        <div class=" name">\n                            <span class="marquee">{{this.name[0].FirstName}}</span>\n                        </div>\n                        <div class="attributes ">\n                            <span class="loyalty">\n                            </span>\n                            <span class="runs">{{this.name[0].runs}}</span>\n                            <span class="wickets">{{this.name[0].wickets}}</span>\n                            <span class="highestScore">{{this.name[0].highscore}}</span>\n                            <span class="average">{{this.name[0].strikeRate}}</span>\n                            <span class="four">{{this.name[0].fours}}</span>\n                            <span class="six">{{this.name[0].sixes}}</span>\n\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n\n        <div style="height: 20px"></div>\n</body>'/*ion-inline-end:"/Users/Aman/Desktop/dragons1/src/pages/show/show.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]])
 ], ShowPage);
@@ -893,7 +938,7 @@ ShowPage = __decorate([
 
 /***/ }),
 
-/***/ 307:
+/***/ 306:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -987,7 +1032,7 @@ var TeamMembersPage = (function () {
 }());
 TeamMembersPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-team',template:/*ion-inline-start:"/Users/Aman/Desktop/davisdragons/src/pages/teamMembers/teamMembers.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu" ></ion-icon>\n        </button>\n        <ion-title class="bar">Player Profile</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<body class="player">\n\n\n<div class="row">\n    <div class="col-md-3">\n        <div style="width: 300px; margin:auto">\n            <div class="card toty fifa17">\n                <div class="player">\n                    <img src="assets/img/Player_Profile.jpg" id="player-card">\n\n                    <div class="avatarholder" style="width: 115px; resize: horizontal ">\n                        //<img src= {{thePlayer.picture}} class="avatar">\n                    </div>\n                    <div class=" name">\n                        <span class="marquee">{{this.thePlayer.FirstName}}</span>\n                    </div>\n                    <div class="attributes ">\n                            <span class="loyalty">\n                            </span>\n                        <span class="runs">{{this.thePlayer.runs}}</span>\n                        <span class="wickets">{{this.thePlayer.wickets}}</span>\n                        <span class="highestScore">{{this.thePlayer.highscore}}</span>\n                        <span class="average">{{this.thePlayer.strikeRate}}</span>\n                        <span class="four">{{this.thePlayer.fours}}</span>\n                        <span class="six">{{this.thePlayer.sixes}}</span>\n\n                    </div>\n                </div>\n                <div class="chemstyle">\n                    <span class="chemstylename">{{this.thePlayer.role}}</span>\n                </div>\n            </div>\n            <button ion-button (click) = "goToaddPlayer()"> Add </button>\n        </div>\n    </div>\n</div>\n\n<div style="height: 20px"></div>\n</body>'/*ion-inline-end:"/Users/Aman/Desktop/davisdragons/src/pages/teamMembers/teamMembers.html"*/
+        selector: 'page-team',template:/*ion-inline-start:"/Users/Aman/Desktop/dragons1/src/pages/teamMembers/teamMembers.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu" ></ion-icon>\n        </button>\n        <ion-title class="bar">Player Profile</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<body class="player">\n\n\n<div class="row">\n    <div class="col-md-3">\n        <div style="width: 300px; margin:auto">\n            <div class="card toty fifa17">\n                <div class="player">\n                    <img src="assets/img/Player_Profile.jpg" id="player-card">\n\n                    <div class="avatarholder" style="width: 115px; resize: horizontal ">\n                        //<img src= {{thePlayer.picture}} class="avatar">\n                    </div>\n                    <div class=" name">\n                        <span class="marquee">{{this.thePlayer.FirstName}}</span>\n                    </div>\n                    <div class="attributes ">\n                            <span class="loyalty">\n                            </span>\n                        <span class="runs">{{this.thePlayer.runs}}</span>\n                        <span class="wickets">{{this.thePlayer.wickets}}</span>\n                        <span class="highestScore">{{this.thePlayer.highscore}}</span>\n                        <span class="average">{{this.thePlayer.strikeRate}}</span>\n                        <span class="four">{{this.thePlayer.fours}}</span>\n                        <span class="six">{{this.thePlayer.sixes}}</span>\n\n                    </div>\n                </div>\n                <div class="chemstyle">\n                    <span class="chemstylename">{{this.thePlayer.role}}</span>\n                </div>\n            </div>\n            <button ion-button (click) = "goToaddPlayer()"> Add </button>\n        </div>\n    </div>\n</div>\n\n<div style="height: 20px"></div>\n</body>'/*ion-inline-end:"/Users/Aman/Desktop/dragons1/src/pages/teamMembers/teamMembers.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */]])
 ], TeamMembersPage);
@@ -996,7 +1041,7 @@ TeamMembersPage = __decorate([
 
 /***/ }),
 
-/***/ 308:
+/***/ 307:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1090,7 +1135,7 @@ var AwayTeamMembersPage = (function () {
 }());
 AwayTeamMembersPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-Awayteam',template:/*ion-inline-start:"/Users/Aman/Desktop/davisdragons/src/pages/AwayTeamMembers/AwayteamMembers.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu" ></ion-icon>\n        </button>\n        <ion-title class="bar">Player Profile</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<body class="player">\n\n\n<div class="row">\n    <div class="col-md-3">\n        <div style="width: 300px; margin:auto">\n            <div class="card toty fifa17">\n                <div class="player">\n                    <img src="assets/img/Player_Profile.jpg" id="player-card">\n\n                    <div class="avatarholder" style="width: 115px; resize: horizontal ">\n                        <img src= {{this.thePlayer.picture}} class="avatar">\n                    </div>\n                    <div class=" name">\n                        <span class="marquee">{{this.thePlayer.FirstName}}</span>\n                    </div>\n                    <div class="attributes ">\n                            <span class="loyalty">\n                            </span>\n                        <span class="runs">{{this.thePlayer.runs}}</span>\n                        <span class="wickets">{{this.thePlayer.wickets}}</span>\n                        <span class="highestScore">{{this.thePlayer.highscore}}</span>\n                        <span class="average">{{this.thePlayer.strikeRate}}</span>\n                        <span class="four">{{this.thePlayer.fours}}</span>\n                        <span class="six">{{this.thePlayer.sixes}}</span>\n\n                    </div>\n                </div>\n            </div>\n            <button ion-button (click) = "goToaddPlayer()"> Add </button>\n        </div>\n    </div>\n</div>\n\n<div style="height: 20px"></div>\n</body>\n'/*ion-inline-end:"/Users/Aman/Desktop/davisdragons/src/pages/AwayTeamMembers/AwayteamMembers.html"*/
+        selector: 'page-Awayteam',template:/*ion-inline-start:"/Users/Aman/Desktop/dragons1/src/pages/AwayTeamMembers/AwayteamMembers.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu" ></ion-icon>\n        </button>\n        <ion-title class="bar">Player Profile</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<body class="player">\n\n\n<div class="row">\n    <div class="col-md-3">\n        <div style="width: 300px; margin:auto">\n            <div class="card toty fifa17">\n                <div class="player">\n                    <img src="assets/img/Player_Profile.jpg" id="player-card">\n\n                    <div class="avatarholder" style="width: 115px; resize: horizontal ">\n                        <img src= {{this.thePlayer.picture}} class="avatar">\n                    </div>\n                    <div class=" name">\n                        <span class="marquee">{{this.thePlayer.FirstName}}</span>\n                    </div>\n                    <div class="attributes ">\n                            <span class="loyalty">\n                            </span>\n                        <span class="runs">{{this.thePlayer.runs}}</span>\n                        <span class="wickets">{{this.thePlayer.wickets}}</span>\n                        <span class="highestScore">{{this.thePlayer.highscore}}</span>\n                        <span class="average">{{this.thePlayer.strikeRate}}</span>\n                        <span class="four">{{this.thePlayer.fours}}</span>\n                        <span class="six">{{this.thePlayer.sixes}}</span>\n\n                    </div>\n                </div>\n            </div>\n            <button ion-button (click) = "goToaddPlayer()"> Add </button>\n        </div>\n    </div>\n</div>\n\n<div style="height: 20px"></div>\n</body>\n'/*ion-inline-end:"/Users/Aman/Desktop/dragons1/src/pages/AwayTeamMembers/AwayteamMembers.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]])
 ], AwayTeamMembersPage);
@@ -1099,7 +1144,7 @@ AwayTeamMembersPage = __decorate([
 
 /***/ }),
 
-/***/ 309:
+/***/ 308:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1132,7 +1177,7 @@ var ProfilePage = (function () {
 }());
 ProfilePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-profile',template:/*ion-inline-start:"/Users/Aman/Desktop/davisdragons/src/pages/Profile/profile.html"*/'<ion-header>\n    <ion-navbar class="bar">\n        <button ion-button menuToggle>\n            <ion-icon name="menu"></ion-icon>\n        </button>\n        <h4 class="name"> Aman </h4>\n\n    </ion-navbar>\n    <ion-toolbar no-border-top>\n        <ion-segment [(ngModel)]="roster">\n            <ion-segment-button value="Profile">\n                Profile\n            </ion-segment-button>\n            <ion-segment-button value="Achievments">\n                Achievments\n            </ion-segment-button>\n        </ion-segment>\n    </ion-toolbar>\n</ion-header>\n<ion-content>\n    <div [ngSwitch]="roster">\n        <ion-list *ngSwitchCase="\'Profile\'">\n            <h4 class="profile" > Welcome to your profile </h4>\n            <div class="col-md-3">\n\n                    <div class="card toty fifa17">\n                        <div class="player">\n                            <img src="assets/img/Player_Profile.jpg" id="player-card">\n\n                            <div class="avatarholder" style="width: 115px; ">\n                                <img src= "assets/img/rohit.jpg" class="avatar">\n                            </div>\n                            <div class=" name">\n                                <span class="marquee"> Aman </span>\n                            </div>\n                            <div class="attributes ">\n                            <span class="loyalty">\n                            </span>\n                                <span class="runs"> 4 </span>\n                                <span class="wickets"> 6 </span>\n                                <span class="highestScore"> 6 </span>\n                                <span class="average"> 6 </span>\n                                <span class="four"> 2 </span>\n                                <span class="six"> 6 </span>\n\n                            </div>\n                        </div>\n                    </div>\n                </div>\n\n        </ion-list>\n\n\n        <ion-list *ngSwitchCase="\'Achievments\'">\n\n        </ion-list>\n    </div>\n</ion-content>\n\n\n\n\n'/*ion-inline-end:"/Users/Aman/Desktop/davisdragons/src/pages/Profile/profile.html"*/
+        selector: 'page-profile',template:/*ion-inline-start:"/Users/Aman/Desktop/dragons1/src/pages/Profile/profile.html"*/'<ion-header>\n    <ion-navbar class="bar">\n        <button ion-button menuToggle>\n            <ion-icon name="menu"></ion-icon>\n        </button>\n        <h4 class="name"> Aman </h4>\n\n    </ion-navbar>\n    <ion-toolbar no-border-top>\n        <ion-segment [(ngModel)]="roster">\n            <ion-segment-button value="Profile">\n                Profile\n            </ion-segment-button>\n            <ion-segment-button value="Achievments">\n                Achievments\n            </ion-segment-button>\n        </ion-segment>\n    </ion-toolbar>\n</ion-header>\n<ion-content>\n    <div [ngSwitch]="roster">\n        <ion-list *ngSwitchCase="\'Profile\'">\n            <h4 class="profile" > Welcome to your profile </h4>\n            <div class="col-md-3">\n\n                    <div class="card toty fifa17">\n                        <div class="player">\n                            <img src="assets/img/Player_Profile.jpg" id="player-card">\n\n                            <div class="avatarholder" style="width: 115px; ">\n                                <img src= "assets/img/rohit.jpg" class="avatar">\n                            </div>\n                            <div class=" name">\n                                <span class="marquee"> Aman </span>\n                            </div>\n                            <div class="attributes ">\n                            <span class="loyalty">\n                            </span>\n                                <span class="runs"> 4 </span>\n                                <span class="wickets"> 6 </span>\n                                <span class="highestScore"> 6 </span>\n                                <span class="average"> 6 </span>\n                                <span class="four"> 2 </span>\n                                <span class="six"> 6 </span>\n\n                            </div>\n                        </div>\n                    </div>\n                </div>\n\n        </ion-list>\n\n\n        <ion-list *ngSwitchCase="\'Achievments\'">\n\n        </ion-list>\n    </div>\n</ion-content>\n\n\n\n\n'/*ion-inline-end:"/Users/Aman/Desktop/dragons1/src/pages/Profile/profile.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]])
 ], ProfilePage);
@@ -1141,7 +1186,7 @@ ProfilePage = __decorate([
 
 /***/ }),
 
-/***/ 310:
+/***/ 309:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1150,7 +1195,7 @@ ProfilePage = __decorate([
 /* unused harmony export FormsPage */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(26);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1213,13 +1258,13 @@ FormsPage = __decorate([
 
 /***/ }),
 
-/***/ 311:
+/***/ 310:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(312);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(328);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(311);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(327);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -1227,7 +1272,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 328:
+/***/ 327:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1236,32 +1281,32 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_facebook__ = __webpack_require__(248);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2__ = __webpack_require__(376);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_firebase_cofig__ = __webpack_require__(384);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2__ = __webpack_require__(375);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_firebase_cofig__ = __webpack_require__(383);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__(460);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_signIn_signIn__ = __webpack_require__(301);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_getter_getter__ = __webpack_require__(305);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_signIn_signIn__ = __webpack_require__(300);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_getter_getter__ = __webpack_require__(304);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_add_add__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_Search_search__ = __webpack_require__(159);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_show_show__ = __webpack_require__(306);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_show_show__ = __webpack_require__(305);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_createMatch_createMatch__ = __webpack_require__(158);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_CheckRole_CheckRole__ = __webpack_require__(465);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_teamMembers_teamMembers__ = __webpack_require__(307);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_teamMembers_teamMembers__ = __webpack_require__(306);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_FindPlayer_FindPlayer__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_AwayFindPlayer_AwayFindPlayer__ = __webpack_require__(160);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_AwayTeamMembers_AwayteamMembers__ = __webpack_require__(308);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_matchOffline_matchOffline__ = __webpack_require__(303);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_extras_extras__ = __webpack_require__(304);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_AwayTeamMembers_AwayteamMembers__ = __webpack_require__(307);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_matchOffline_matchOffline__ = __webpack_require__(302);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_extras_extras__ = __webpack_require__(303);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_home_home__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_list_list__ = __webpack_require__(466);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_spectator_spectator__ = __webpack_require__(157);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_member_member__ = __webpack_require__(310);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_Profile_profile__ = __webpack_require__(309);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__ionic_native_status_bar__ = __webpack_require__(299);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__ionic_native_splash_screen__ = __webpack_require__(300);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_member_member__ = __webpack_require__(309);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_Profile_profile__ = __webpack_require__(308);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__ionic_native_status_bar__ = __webpack_require__(298);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__ionic_native_splash_screen__ = __webpack_require__(299);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__providers_firebase_firebase__ = __webpack_require__(467);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__ionic_native_google_plus__ = __webpack_require__(302);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__ionic_native_google_plus__ = __webpack_require__(301);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__pages_umpire_umpire__ = __webpack_require__(90);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1378,12 +1423,12 @@ AppModule = __decorate([
 
 /***/ }),
 
-/***/ 384:
+/***/ 383:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FIREBASE_CONFIG; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_firebase__ = __webpack_require__(254);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_firebase__ = __webpack_require__(384);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_firebase__);
 
 var FIREBASE_CONFIG = {
@@ -1408,9 +1453,9 @@ __WEBPACK_IMPORTED_MODULE_0_firebase__["initializeApp"](FIREBASE_CONFIG);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(299);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(300);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_signIn_signIn__ = __webpack_require__(301);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(298);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(299);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_signIn_signIn__ = __webpack_require__(300);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_add_add__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_Search_search__ = __webpack_require__(159);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_home_home__ = __webpack_require__(89);
@@ -1419,7 +1464,7 @@ __WEBPACK_IMPORTED_MODULE_0_firebase__["initializeApp"](FIREBASE_CONFIG);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_createMatch_createMatch__ = __webpack_require__(158);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_FindPlayer_FindPlayer__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_AwayFindPlayer_AwayFindPlayer__ = __webpack_require__(160);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_Profile_profile__ = __webpack_require__(309);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_Profile_profile__ = __webpack_require__(308);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1524,7 +1569,7 @@ __decorate([
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Nav */])
 ], MyApp.prototype, "nav", void 0);
 MyApp = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/Users/Aman/Desktop/davisdragons/src/app/app.html"*/'<ion-menu [content]="content">\n  <ion-header>\n    <ion-toolbar>\n      <div center>\n      <ion-avatar>\n      <img style=\'width: 25%; display: block; margin: 0 auto;\' src="assets/img/Welcome.jpg">\n    </ion-avatar>\n      </div>\n     <ion-title text-center>Davis Dragons\n      </ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content *ngIf="access_val == null">\n      <ion-list>\n        <button menuClose ion-item *ngFor="let p of pages_0" (click)="openPage(p)">\n          {{p.title}}\n        </button>\n      </ion-list>\n    </ion-content>\n\n  <ion-content *ngIf="access_val == 0">\n    <ion-list>\n      <button menuClose ion-item *ngFor="let p of pages_0" (click)="openPage(p)">\n        {{p.title}}\n      </button>\n    </ion-list>\n  </ion-content>\n\n  <ion-content *ngIf="access_val == 1">\n      <ion-list>\n        <button menuClose ion-item *ngFor="let p of pages_1" (click)="openPage(p)">\n          {{p.title}}\n        </button>\n      </ion-list>\n    </ion-content>\n\n    <ion-content *ngIf="access_val == 2">\n        <ion-list>\n          <button menuClose ion-item *ngFor="let p of pages_2" (click)="openPage(p)">\n            {{p.title}}\n          </button>\n        </ion-list>\n      </ion-content>\n\n      <ion-content *ngIf="access_val == 3">\n          <ion-list>\n            <button menuClose ion-item *ngFor="let p of pages_3" (click)="openPage(p)">\n              {{p.title}}\n            </button>\n          </ion-list>\n        </ion-content>\n\n        <ion-content *ngIf="access_val == 4">\n            <ion-list>\n              <button menuClose ion-item *ngFor="let p of pages_4" (click)="openPage(p)">\n                {{p.title}}\n              </button>\n            </ion-list>\n          </ion-content>\n\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"/Users/Aman/Desktop/davisdragons/src/app/app.html"*/
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/Users/Aman/Desktop/dragons1/src/app/app.html"*/'<ion-menu [content]="content">\n  <ion-header>\n    <ion-toolbar>\n      <div center>\n      <ion-avatar>\n      <img style=\'width: 25%; display: block; margin: 0 auto;\' src="assets/img/Welcome.jpg">\n    </ion-avatar>\n      </div>\n     <ion-title text-center>Davis Dragons\n      </ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content *ngIf="access_val == null">\n      <ion-list>\n        <button menuClose ion-item *ngFor="let p of pages_0" (click)="openPage(p)">\n          {{p.title}}\n        </button>\n      </ion-list>\n    </ion-content>\n\n  <ion-content *ngIf="access_val == 0">\n    <ion-list>\n      <button menuClose ion-item *ngFor="let p of pages_0" (click)="openPage(p)">\n        {{p.title}}\n      </button>\n    </ion-list>\n  </ion-content>\n\n  <ion-content *ngIf="access_val == 1">\n      <ion-list>\n        <button menuClose ion-item *ngFor="let p of pages_1" (click)="openPage(p)">\n          {{p.title}}\n        </button>\n      </ion-list>\n    </ion-content>\n\n    <ion-content *ngIf="access_val == 2">\n        <ion-list>\n          <button menuClose ion-item *ngFor="let p of pages_2" (click)="openPage(p)">\n            {{p.title}}\n          </button>\n        </ion-list>\n      </ion-content>\n\n      <ion-content *ngIf="access_val == 3">\n          <ion-list>\n            <button menuClose ion-item *ngFor="let p of pages_3" (click)="openPage(p)">\n              {{p.title}}\n            </button>\n          </ion-list>\n        </ion-content>\n\n        <ion-content *ngIf="access_val == 4">\n            <ion-list>\n              <button menuClose ion-item *ngFor="let p of pages_4" (click)="openPage(p)">\n                {{p.title}}\n              </button>\n            </ion-list>\n          </ion-content>\n\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"/Users/Aman/Desktop/dragons1/src/app/app.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
 ], MyApp);
@@ -1656,7 +1701,7 @@ var CheckRolePage = (function () {
 }());
 CheckRolePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-CheckRole',template:/*ion-inline-start:"/Users/Aman/Desktop/davisdragons/src/pages/CheckRole/CheckRole.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu" ></ion-icon>\n        </button>\n        <ion-title class="bar">My Team</ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n    <ion-fab right bottom>\n        <button ion-fab color="white"><ion-icon name="add"></ion-icon></button>\n    </ion-fab>\n    <ion-list>\n        <ion-list-header text-center class="headfont">  Add Players </ion-list-header>\n        <ion-item>\n            <ion-label floating>Match Key</ion-label>\n            <ion-input type="text"[(ngModel)] = "side.startKey"></ion-input>\n        </ion-item>\n\n\n        <ion-item>\n            <ion-label floating>Home Team Captain Jersey Number</ion-label>\n            <ion-input type="text"[(ngModel)] = "captains.Homecaptain"></ion-input>\n        </ion-item>\n\n        <div class="OR" style="text-align:center">\n            <p>Or</p></div>\n\n        <ion-item>\n            <ion-label floating>Away Team Captain Jersey Number</ion-label>\n            <ion-input type="text"[(ngModel)] = "captains.Awaycaptain"></ion-input>\n        </ion-item>\n\n\n\n    </ion-list>\n\n    <div padding>\n        <button ion-button  type="button" (click)="check(side,captains)">Start Match</button>\n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/Aman/Desktop/davisdragons/src/pages/CheckRole/CheckRole.html"*/
+        selector: 'page-CheckRole',template:/*ion-inline-start:"/Users/Aman/Desktop/dragons1/src/pages/CheckRole/CheckRole.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu" ></ion-icon>\n        </button>\n        <ion-title class="bar">My Team</ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n    <ion-fab right bottom>\n        <button ion-fab color="white"><ion-icon name="add"></ion-icon></button>\n    </ion-fab>\n    <ion-list>\n        <ion-list-header text-center class="headfont">  Add Players </ion-list-header>\n        <ion-item>\n            <ion-label floating>Match Key</ion-label>\n            <ion-input type="text"[(ngModel)] = "side.startKey"></ion-input>\n        </ion-item>\n\n\n        <ion-item>\n            <ion-label floating>Home Team Captain Jersey Number</ion-label>\n            <ion-input type="text"[(ngModel)] = "captains.Homecaptain"></ion-input>\n        </ion-item>\n\n        <div class="OR" style="text-align:center">\n            <p>Or</p></div>\n\n        <ion-item>\n            <ion-label floating>Away Team Captain Jersey Number</ion-label>\n            <ion-input type="text"[(ngModel)] = "captains.Awaycaptain"></ion-input>\n        </ion-item>\n\n\n\n    </ion-list>\n\n    <div padding>\n        <button ion-button  type="button" (click)="check(side,captains)">Start Match</button>\n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/Aman/Desktop/dragons1/src/pages/CheckRole/CheckRole.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]])
 ], CheckRolePage);
@@ -1711,7 +1756,7 @@ var ListPage = ListPage_1 = (function () {
 }());
 ListPage = ListPage_1 = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-list',template:/*ion-inline-start:"/Users/Aman/Desktop/davisdragons/src/pages/list/list.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>List</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">\n      <ion-icon [name]="item.icon" item-left></ion-icon>\n      {{item.title}}\n      <div class="item-note" item-right>\n        {{item.note}}\n      </div>\n    </button>\n  </ion-list>\n  <div *ngIf="selectedItem" padding>\n    You navigated here from <b>{{selectedItem.title}}</b>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/Users/Aman/Desktop/davisdragons/src/pages/list/list.html"*/
+        selector: 'page-list',template:/*ion-inline-start:"/Users/Aman/Desktop/dragons1/src/pages/list/list.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>List</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">\n      <ion-icon [name]="item.icon" item-left></ion-icon>\n      {{item.title}}\n      <div class="item-note" item-right>\n        {{item.note}}\n      </div>\n    </button>\n  </ion-list>\n  <div *ngIf="selectedItem" padding>\n    You navigated here from <b>{{selectedItem.title}}</b>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/Users/Aman/Desktop/dragons1/src/pages/list/list.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
 ], ListPage);
@@ -1847,7 +1892,7 @@ var HomePage = HomePage_1 = (function () {
 }());
 HomePage = HomePage_1 = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-home',template:/*ion-inline-start:"/Users/Aman/Desktop/davisdragons/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <div text-center>\n    <button ion-button large round [color]="isLive ? \'live\' : \'danger\'" (click) = "goToMatch()">\n    		{{ matchState }}\n    </button>\n    </div>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-content class="card-background-page">\n\n  <ion-card>\n    <img src="assets/img/match4.jpg"/>\n    <div class="card-title">Men In Black vs. Royal Blues</div>\n    <div class="card-subtitle">7th February, 2017</div>\n  </ion-card>\n\n  <ion-card>\n    <img src="assets/img/celebcricket.jpg"/>\n    <div class="card-title">Royal Blues vs. Men In Black</div>\n    <div class="card-subtitle">11th November, 2016</div>\n  </ion-card>\n\n  <ion-card>\n    <img src="assets/img/matchday.jpg"/>\n    <div class="card-title">Royal Blues vs. Men In Black</div>\n    <div class="card-subtitle">15th May, 2016</div>\n  </ion-card>\n\n  <ion-card>\n    <img src="assets/img/anothernetday.jpg"/>\n    <div class="card-title">Dragons In The Nets</div>\n    <div class="card-subtitle">Practice Stats & Leaderboard</div>\n  </ion-card>\n\n</ion-content>\n</ion-content>\n'/*ion-inline-end:"/Users/Aman/Desktop/davisdragons/src/pages/home/home.html"*/
+        selector: 'page-home',template:/*ion-inline-start:"/Users/Aman/Desktop/dragons1/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <div text-center>\n    <button ion-button large round [color]="isLive ? \'live\' : \'danger\'" (click) = "goToMatch()">\n    		{{ matchState }}\n    </button>\n    </div>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-content class="card-background-page">\n\n  <ion-card>\n    <img src="assets/img/match4.jpg"/>\n    <div class="card-title">Men In Black vs. Royal Blues</div>\n    <div class="card-subtitle">7th February, 2017</div>\n  </ion-card>\n\n  <ion-card>\n    <img src="assets/img/celebcricket.jpg"/>\n    <div class="card-title">Royal Blues vs. Men In Black</div>\n    <div class="card-subtitle">11th November, 2016</div>\n  </ion-card>\n\n  <ion-card>\n    <img src="assets/img/matchday.jpg"/>\n    <div class="card-title">Royal Blues vs. Men In Black</div>\n    <div class="card-subtitle">15th May, 2016</div>\n  </ion-card>\n\n  <ion-card>\n    <img src="assets/img/anothernetday.jpg"/>\n    <div class="card-title">Dragons In The Nets</div>\n    <div class="card-subtitle">Practice Stats & Leaderboard</div>\n  </ion-card>\n\n</ion-content>\n</ion-content>\n'/*ion-inline-end:"/Users/Aman/Desktop/dragons1/src/pages/home/home.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]])
 ], HomePage);
@@ -1865,8 +1910,8 @@ var HomePage_1;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__matchOffline_matchOffline__ = __webpack_require__(303);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__extras_extras__ = __webpack_require__(304);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__matchOffline_matchOffline__ = __webpack_require__(302);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__extras_extras__ = __webpack_require__(303);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2271,7 +2316,7 @@ UmpirePage.overString = "";
 UmpirePage.height1 = 0;
 UmpirePage.octant = 0;
 UmpirePage = UmpirePage_1 = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/Users/Aman/Desktop/davisdragons/src/pages/umpire/umpire.html"*/'\n  <ion-content>\n    <div>\n	<button ion-button color="secondary" clear menuToggle>\n		<ion-icon name="menu"></ion-icon>\n	</button>\n  <ion-toolbar no-border-top>\n      <ion-segment [(ngModel)]="players" color="danger">\n          <ion-segment-button value="friends" (ionSelect)="wicket()">\n            OnStrike\n            <div *ngFor ="let item of matchStats$ | async; let i = index; let lst = last">\n             {{item.OnStrike}}\n            </div>\n          </ion-segment-button>\n      <ion-segment-button value="enemies" (ionSelect)="wicket()">\n          <img style="width: 10%;" src="assets/icon/wicket.svg" />\n      </ion-segment-button>\n\n      <ion-segment-button value="home" (ionSelect)="wicket()">\n        OffStrike\n      </ion-segment-button>\n      <ion-segment-button value="away" (ionSelect)="wicket()">\n        <img style="width: 10%;" src="assets/icon/wicket.svg" />\n</ion-segment-button>\n</ion-segment>\n</ion-toolbar>\n\n\n\n    <button ion-button center color ="danger" (click) = \'wicket(); \'>\n    			<img style="width: 15%;" src="assets/icon/wicket.svg" /> wicket\n    </button>\n    <br />\n\n  </div>\n  <div on-tap="onTap($event)">\n  <img style="width: 100%;" src="assets/img/wagonWheelBase.jpg" />\n  </div>\n  <div text-center>\n    <div style="display: none" id="lastMan"><input padding type="checkbox" id="cb">Last Man Standing</div><br>\n    <button ion-button color="secondary" id="run_button1" clear (click) = \'increment(1); run_button1();\'>+1</button>\n    <button ion-button color="secondary" id="run_button2" clear (click) = \'increment(2); run_button2();\' >+2</button>\n    <button ion-button color="secondary" id="run_button3" clear (click) = \'increment(3); run_button3();\'>+3</button>\n    <button ion-button color="secondary" id="run_button4" clear (click) = \'increment(4); run_button4();\' >+4</button>\n    <button ion-button color="secondary" id="run_button6" clear (click) = \'increment(6); run_button6();\'>+6</button>\n    <button ion-button color ="secondary" id="run_button0" clear (click) = \'increment(0); run_button0();\'> Dot </button>\n    <button ion-button color="danger" id="toss" clear (click) = \' computeToss(); \' >Toss</button>\n    <button ion-button color="dark" (click) = \'wide();\' > Wide</button>\n    <button ion-button color="danger" clear (click) = \'increment(); goToExtras(); \' >Extras</button>\n    <button ion-button color="danger" full (click) = \'clear(); pushdata();\' >Go!</button>\n    <button ion-button style="height: 20px;"color ="danger" (click) = \'endMatch(); \'>\n        End Match\n      </button>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/Aman/Desktop/davisdragons/src/pages/umpire/umpire.html"*/
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/Users/Aman/Desktop/dragons1/src/pages/umpire/umpire.html"*/'\n  <ion-content>\n    <div>\n	<button ion-button color="secondary" clear menuToggle>\n		<ion-icon name="menu"></ion-icon>\n	</button>\n  <ion-toolbar no-border-top>\n      <ion-segment [(ngModel)]="players" color="danger">\n          <ion-segment-button value="friends" (ionSelect)="wicket()">\n            OnStrike\n            <div *ngFor ="let item of matchStats$ | async; let i = index; let lst = last">\n             {{item.OnStrike}}\n            </div>\n          </ion-segment-button>\n      <ion-segment-button value="enemies" (ionSelect)="wicket()">\n          <img style="width: 10%;" src="assets/icon/wicket.svg" />\n      </ion-segment-button>\n\n      <ion-segment-button value="home" (ionSelect)="wicket()">\n        OffStrike\n      </ion-segment-button>\n      <ion-segment-button value="away" (ionSelect)="wicket()">\n        <img style="width: 10%;" src="assets/icon/wicket.svg" />\n</ion-segment-button>\n</ion-segment>\n</ion-toolbar>\n\n\n\n    <button ion-button center color ="danger" (click) = \'wicket(); \'>\n    			<img style="width: 15%;" src="assets/icon/wicket.svg" /> wicket\n    </button>\n    <br />\n\n  </div>\n  <div on-tap="onTap($event)">\n  <img style="width: 100%;" src="assets/img/wagonWheelBase.jpg" />\n  </div>\n  <div text-center>\n    <div style="display: none" id="lastMan"><input padding type="checkbox" id="cb">Last Man Standing</div><br>\n    <button ion-button color="secondary" id="run_button1" clear (click) = \'increment(1); run_button1();\'>+1</button>\n    <button ion-button color="secondary" id="run_button2" clear (click) = \'increment(2); run_button2();\' >+2</button>\n    <button ion-button color="secondary" id="run_button3" clear (click) = \'increment(3); run_button3();\'>+3</button>\n    <button ion-button color="secondary" id="run_button4" clear (click) = \'increment(4); run_button4();\' >+4</button>\n    <button ion-button color="secondary" id="run_button6" clear (click) = \'increment(6); run_button6();\'>+6</button>\n    <button ion-button color ="secondary" id="run_button0" clear (click) = \'increment(0); run_button0();\'> Dot </button>\n    <button ion-button color="danger" id="toss" clear (click) = \' computeToss(); \' >Toss</button>\n    <button ion-button color="dark" (click) = \'wide();\' > Wide</button>\n    <button ion-button color="danger" clear (click) = \'increment(); goToExtras(); \' >Extras</button>\n    <button ion-button color="danger" full (click) = \'clear(); pushdata();\' >Go!</button>\n    <button ion-button style="height: 20px;"color ="danger" (click) = \'endMatch(); \'>\n        End Match\n      </button>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/Aman/Desktop/dragons1/src/pages/umpire/umpire.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ToastController */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */]])
 ], UmpirePage);
@@ -2316,6 +2361,8 @@ var AddPage = (function () {
         //this.player.email = user.email;
         //this.player.picture = user.photoURL;
         //this.player.picture = null;
+        console.log("heyyyyyyyyyyyyyyyyyyyYYYYYYYYYYYYYYYYYY " + user.email);
+        alert("heyyyyyyyyyyyyyyyyyyyYYYYYYYYYYYYYYYYYY " + user.email);
         this.player.picture = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Iverson_from_behind.jpg/180px-Iverson_from_behind.jpg";
         this.player.email = "nbadavis@gmail.com";
         //this.userRef$ = this.data.object('Players');
@@ -2357,7 +2404,7 @@ var AddPage = (function () {
 }());
 AddPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-add',template:/*ion-inline-start:"/Users/Aman/Desktop/davisdragons/src/pages/add/add.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu" ></ion-icon>\n    </button>\n    <ion-title class="bar">Add</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n<ion-fab right bottom>\n<button ion-fab color="white"><ion-icon name="add"></ion-icon></button>\n</ion-fab>\n<ion-list>\n	<ion-list-header text-center class="headfont"> Add Player </ion-list-header>\n    <ion-item>\n        <ion-label floating>First Name</ion-label>\n        <ion-input id ="Fname" type="text"[(ngModel)] = "player.FirstName"></ion-input>\n    </ion-item>\n\n    <ion-item>\n        <ion-label floating>Last Name</ion-label>\n        <ion-input id ="Lname" type="text"[(ngModel)] = "player.LastName"></ion-input>\n    </ion-item>\n\n    <ion-item>\n    <ion-label floating>Jersey Number</ion-label>\n		<ion-input id ="jr" type="text"[(ngModel)] = "player.Jersey_Number"></ion-input>\n	</ion-item>\n\n\n\n\n</ion-list>\n\n<div padding>\n\n  <button ion-button  type="button" (click)="addPlayer(player)">Add Player</button>\n</div>\n</ion-content>\n'/*ion-inline-end:"/Users/Aman/Desktop/davisdragons/src/pages/add/add.html"*/
+        selector: 'page-add',template:/*ion-inline-start:"/Users/Aman/Desktop/dragons1/src/pages/add/add.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu" ></ion-icon>\n    </button>\n    <ion-title class="bar">Add</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n<ion-fab right bottom>\n<button ion-fab color="white"><ion-icon name="add"></ion-icon></button>\n</ion-fab>\n<ion-list>\n	<ion-list-header text-center class="headfont"> Add Player </ion-list-header>\n    <ion-item>\n        <ion-label floating>First Name</ion-label>\n        <ion-input id ="Fname" type="text"[(ngModel)] = "player.FirstName"></ion-input>\n    </ion-item>\n\n    <ion-item>\n        <ion-label floating>Last Name</ion-label>\n        <ion-input id ="Lname" type="text"[(ngModel)] = "player.LastName"></ion-input>\n    </ion-item>\n\n    <ion-item>\n    <ion-label floating>Jersey Number</ion-label>\n		<ion-input id ="jr" type="text"[(ngModel)] = "player.Jersey_Number"></ion-input>\n	</ion-item>\n\n\n\n\n</ion-list>\n\n<div padding>\n\n  <button ion-button  type="button" (click)="addPlayer(player)">Add Player</button>\n</div>\n</ion-content>\n'/*ion-inline-end:"/Users/Aman/Desktop/dragons1/src/pages/add/add.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]])
 ], AddPage);
@@ -2374,7 +2421,7 @@ AddPage = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__teamMembers_teamMembers__ = __webpack_require__(307);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__teamMembers_teamMembers__ = __webpack_require__(306);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2477,7 +2524,7 @@ var FindPlayerPage = FindPlayerPage_1 = (function () {
 }());
 FindPlayerPage = FindPlayerPage_1 = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-find',template:/*ion-inline-start:"/Users/Aman/Desktop/davisdragons/src/pages/FindPlayer/FindPlayer.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu" ></ion-icon>\n        </button>\n        <ion-title class="bar">Player Search</ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n    <ion-fab right bottom>\n        <button ion-fab color="white"><ion-icon name="add"></ion-icon></button>\n    </ion-fab>\n    <ion-list>\n        <ion-list-header text-center class="headfont"> Search </ion-list-header>\n        <ion-item>\n            <ion-label floating>Jersey Number</ion-label>\n            <ion-input id ="jr" type="text"[(ngModel)] = "SidePlayer.Jersey_Number"></ion-input>\n        </ion-item>\n\n\n    </ion-list>\n\n    <div padding>\n        <button ion-button  type="button" (click)="check(SidePlayer)">Check</button>\n        <button ion-button  type="button" (click)="reload()">Reload</button>\n\n    </div>\n\n\n\n    <ion-grid>\n        <ion-row>\n            <ion-col col-6 col-md-4 col-xl-3 *ngFor ="let item of Checker" >\n                <div class="card toty fifa17">\n                    <div class="player">\n                        <img src="assets/img/Player_Profile.jpg" id="player-card">\n\n                        <div class="avatarholder" >\n                            <img src= {{item.picture}}>\n                        </div>\n                        <div class=" name">\n                            <span class="marquee">{{item.FirstName}}</span>\n                        </div>\n                        <div class="attributes ">\n            <span class="loyalty">\n            </span>\n                            <span class="runs">{{item.runs}}</span>\n                            <span class="wickets">{{item.wickets}}</span>\n                            <span class="highestScore">{{item.highscore}}</span>\n                            <span class="average">{{item.strikeRate}}</span>\n                            <span class="four">{{item.fours}}</span>\n                            <span class="six">{{item.sixes}}</span>\n\n                        </div>\n                    </div>\n                </div>\n            </ion-col>\n        </ion-row>\n    </ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"/Users/Aman/Desktop/davisdragons/src/pages/FindPlayer/FindPlayer.html"*/
+        selector: 'page-find',template:/*ion-inline-start:"/Users/Aman/Desktop/dragons1/src/pages/FindPlayer/FindPlayer.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu" ></ion-icon>\n        </button>\n        <ion-title class="bar">Player Search</ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n    <ion-fab right bottom>\n        <button ion-fab color="white"><ion-icon name="add"></ion-icon></button>\n    </ion-fab>\n    <ion-list>\n        <ion-list-header text-center class="headfont"> Search </ion-list-header>\n        <ion-item>\n            <ion-label floating>Jersey Number</ion-label>\n            <ion-input id ="jr" type="text"[(ngModel)] = "SidePlayer.Jersey_Number"></ion-input>\n        </ion-item>\n\n\n    </ion-list>\n\n    <div padding>\n        <button ion-button  type="button" (click)="check(SidePlayer)">Check</button>\n        <button ion-button  type="button" (click)="reload()">Reload</button>\n\n    </div>\n\n\n\n    <ion-grid>\n        <ion-row>\n            <ion-col col-6 col-md-4 col-xl-3 *ngFor ="let item of Checker" >\n                <div class="card toty fifa17">\n                    <div class="player">\n                        <img src="assets/img/Player_Profile.jpg" id="player-card">\n\n                        <div class="avatarholder" >\n                            <img src= {{item.picture}}>\n                        </div>\n                        <div class=" name">\n                            <span class="marquee">{{item.FirstName}}</span>\n                        </div>\n                        <div class="attributes ">\n            <span class="loyalty">\n            </span>\n                            <span class="runs">{{item.runs}}</span>\n                            <span class="wickets">{{item.wickets}}</span>\n                            <span class="highestScore">{{item.highscore}}</span>\n                            <span class="average">{{item.strikeRate}}</span>\n                            <span class="four">{{item.fours}}</span>\n                            <span class="six">{{item.sixes}}</span>\n\n                        </div>\n                    </div>\n                </div>\n            </ion-col>\n        </ion-row>\n    </ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"/Users/Aman/Desktop/dragons1/src/pages/FindPlayer/FindPlayer.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]])
 ], FindPlayerPage);
@@ -2487,5 +2534,5 @@ var FindPlayerPage_1;
 
 /***/ })
 
-},[311]);
+},[310]);
 //# sourceMappingURL=main.js.map
