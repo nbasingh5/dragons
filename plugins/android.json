@@ -1,0 +1,59 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-battery-status": {
+      "PACKAGE_NAME": "org.cricket.davisdragons"
+    },
+    "cordova-plugin-browsertab": {
+      "PACKAGE_NAME": "org.cricket.davisdragons"
+    },
+    "cordova-plugin-buildinfo": {
+      "PACKAGE_NAME": "org.cricket.davisdragons"
+    },
+    "cordova-plugin-customurlscheme": {
+      "URL_SCHEME": "org.cricket.davisdragons",
+      "ANDROID_SCHEME": " ",
+      "ANDROID_HOST": " ",
+      "ANDROID_PATHPREFIX": "/",
+      "PACKAGE_NAME": "org.cricket.davisdragons"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "org.cricket.davisdragons"
+    },
+    "cordova-plugin-device-motion": {
+      "PACKAGE_NAME": "org.cricket.davisdragons"
+    },
+    "cordova-plugin-device-orientation": {
+      "PACKAGE_NAME": "org.cricket.davisdragons"
+    },
+    "cordova-plugin-googleplus": {
+      "PACKAGE_NAME": "org.cricket.davisdragons"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "org.cricket.davisdragons"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "org.cricket.davisdragons"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "org.cricket.davisdragons"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "org.cricket.davisdragons"
+    },
+    "cordova-universal-links-plugin": {
+      "PACKAGE_NAME": "org.cricket.davisdragons"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-compat": {
+      "PACKAGE_NAME": "org.cricket.davisdragons"
+    }
+  }
+}
