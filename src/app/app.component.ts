@@ -94,6 +94,7 @@ export class MyApp {
         { title: 'Search Player', component: SearchPage },
     ];
     this.pages_3 = [
+        { title: 'Home', component: HomePage },
         { title: 'Spectator', component: SpectatorPage },
     ];
     this.pages_4 = [

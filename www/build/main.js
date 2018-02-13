@@ -102,6 +102,10 @@ var CreatePage = (function () {
         this.navCtrl = navCtrl;
         this.data = data;
         this.key = {};
+        this.check1 = 0;
+        this.check2 = 0;
+        this.check3 = 0;
+        this.check4 = 0;
         this.balls = {};
         this.team = {};
         this.score = {};
@@ -109,6 +113,33 @@ var CreatePage = (function () {
     }
     CreatePage.prototype.create = function (key, captains) {
         var _this = this;
+        this.name = this.data.list("/Matches/" + key.MatchKey + "/MatchStats/Matchkey");
+        this.name.subscribe(function (data) {
+            console.log("Key: " + data.length);
+            if (data.length == 0) {
+                _this.check1 = 1;
+            }
+            else {
+                alert("A match with this 'Match Key' already exists");
+                _this.check1 = 0;
+            }
+        });
+        this.name = this.data.list("/ClubParams/ClubRoster", {
+            query: {
+                orderByChild: "Jersey_Number",
+                equalTo: captains.umpire
+            }
+        });
+        this.name.subscribe(function (data) {
+            if (data.length == 0) {
+                alert("The Umpire's Jersey Number is not in our databasee");
+                _this.check2 = 0;
+            }
+            else {
+                _this.captains.umpire = captains.umpire;
+                _this.check2 = 1;
+            }
+        });
         this.name = this.data.list("/ClubParams/ClubRoster", {
             query: {
                 orderByChild: "Jersey_Number",
@@ -117,19 +148,15 @@ var CreatePage = (function () {
         });
         this.name.subscribe(function (data) {
             if (data.length == 0) {
-                console.log('User does not exist');
+                console.log('AUser does not exist');
                 alert("The Away Team's Captain's Jersey Number is not in our databasee");
+                _this.check3 = 0;
             }
             else {
-                console.log('User does exist');
+                console.log('AUser does exist');
                 //console.log(data);
                 _this.captains.Awaycaptain = captains.Awaycaptain;
-            }
-        });
-        this.name = this.data.list("/ClubParams/ClubRoster", {
-            query: {
-                orderByChild: "Jersey_Number",
-                equalTo: captains.Awaycaptain
+                _this.check3 = 1;
             }
         });
         this.Home = this.data.list("/ClubParams/ClubRoster", {
@@ -140,13 +167,15 @@ var CreatePage = (function () {
         });
         this.Home.subscribe(function (data) {
             if (data.length == 0) {
-                console.log('User does not exist');
+                console.log('HUser does not exist');
                 alert("The Home Team's Captain's Jersey Number is not in our database");
+                _this.check4 = 0;
             }
             else {
-                console.log('User does exist');
+                console.log('HUser does exist');
                 //console.log(data);
                 _this.captains.Homecaptain = captains.Homecaptain;
+                _this.check4 = 1;
             }
         });
         this.balls.ballid = 0;
@@ -167,47 +196,52 @@ var CreatePage = (function () {
         this.score.totalRuns = 0;
         this.score.totalWickets = 0;
         this.score.ballPtr = 1;
-        for (var i = 1; i <= key.numPlayers; i++) {
-            this.data.object("Matches/" + key.MatchKey + "/MatchStats/PlayerRoster/Away/check/p" + i + "/")
-                .set(-1);
+        console.log("Checks: " + this.check1 + this.check2 + this.check3 + this.check4);
+        if (this.check1 == 1 && this.check2 == 1 && this.check3 == 1 && this.check4 == 1) {
+            for (var i = 1; i <= key.numPlayers; i++) {
+                this.data.object("Matches/" + key.MatchKey + "/MatchStats/PlayerRoster/Away/check/p" + i + "/")
+                    .set(-1);
+            }
+            this.data.object("Matches/" + key.MatchKey + "/MatchStats/PlayerRoster/Away/check/amountofPlayers/")
+                .set(key.numPlayers);
+            this.data.object("Matches/" + key.MatchKey + "/MatchStats/PlayerRoster/Away/MainRoles/Awaycaptain/")
+                .set(this.captains.Awaycaptain);
+            this.data.object("Matches/" + key.MatchKey + "/MatchStats/PlayerRoster/Away/MainRoles/Awayvcaptain/")
+                .set(this.captains.Awayvcaptain);
+            this.data.object("Matches/" + key.MatchKey + "/MatchStats/PlayerRoster/Away/MainRoles/Awaywk/")
+                .set(this.captains.Awaywk);
+            for (var i = 1; i <= key.numPlayers; i++) {
+                this.data.object("Matches/" + key.MatchKey + "/MatchStats/PlayerRoster/Home/check/p" + i + "/")
+                    .set(-1);
+            }
+            this.data.object("Matches/" + key.MatchKey + "/MatchStats/Matchkey/")
+                .set(key.MatchKey);
+            this.data.object("Matches/" + key.MatchKey + "/MatchStats/PlayerRoster/Home/check/amountofPlayers")
+                .set(key.numPlayers);
+            this.data.object("Matches/" + key.MatchKey + "/MatchStats/PlayerRoster/Home/MainRoles/HomeCaptain/")
+                .set(this.captains.Homecaptain);
+            this.data.object("Matches/" + key.MatchKey + "/MatchStats/PlayerRoster/Home/MainRoles/Homevcaptain/")
+                .set(this.captains.Homevcaptain);
+            this.data.object("Matches/" + key.MatchKey + "/MatchStats/PlayerRoster/Home/MainRoles/Homewk/")
+                .set(this.captains.Homewk);
+            this.data.object("Matches/" + key.MatchKey + "/MatchStats/Score/")
+                .set(this.score);
+            this.data.object("Matches/" + key.MatchKey + "/MatchStats/Toss/")
+                .set(this.team.toss);
+            this.data.object("Matches/" + key.MatchKey + "/MatchStats/TeamName/")
+                .set(this.team.TeamName);
+            this.data.object("Matches/" + key.MatchKey + "/MatchStats/Umpire/")
+                .set(this.captains.umpire);
+            this.data.object("ClubParams/LiveMatchState/matchPtr")
+                .set(key.MatchKey);
+            this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__umpire_umpire__["a" /* UmpirePage */]);
         }
-        this.data.object("Matches/" + key.MatchKey + "/MatchStats/PlayerRoster/Away/check/amountofPlayers")
-            .set(key.numPlayers);
-        this.data.object("Matches/" + key.MatchKey + "/MatchStats/PlayerRoster/Away/MainRoles/Awaycaptain")
-            .set(this.captains.Awaycaptain);
-        this.data.object("Matches/" + key.MatchKey + "/MatchStats/PlayerRoster/Away/MainRoles/Awayvcaptain")
-            .set(this.captains.Awayvcaptain);
-        this.data.object("Matches/" + key.MatchKey + "/MatchStats/PlayerRoster/Away/MainRoles/Awaywk")
-            .set(this.captains.Awaywk);
-        for (var i = 1; i <= key.numPlayers; i++) {
-            this.data.object("Matches/" + key.MatchKey + "/MatchStats/PlayerRoster/Home/check/p" + i + "/")
-                .set(-1);
-        }
-        this.data.object("Matches/" + key.MatchKey + "/MatchStats/PlayerRoster/Home/check/amountofPlayers")
-            .set(key.numPlayers);
-        this.data.object("Matches/" + key.MatchKey + "/MatchStats/PlayerRoster/Home/MainRoles/HomeCaptain/")
-            .set(this.captains.Homecaptain);
-        this.data.object("Matches/" + key.MatchKey + "/MatchStats/PlayerRoster/Home/MainRoles/Homevcaptain/")
-            .set(this.captains.Homevcaptain);
-        this.data.object("Matches/" + key.MatchKey + "/MatchStats/PlayerRoster/Home/MainRoles/Homewk/")
-            .set(this.captains.Homewk);
-        this.data.object("Matches/" + key.MatchKey + "/MatchStats/Score/")
-            .set(this.score);
-        this.data.object("Matches/" + key.MatchKey + "/MatchStats/Toss/")
-            .set(this.team.toss);
-        this.data.object("Matches/" + key.MatchKey + "/MatchStats/TeamName/")
-            .set(this.team.TeamName);
-        this.data.object("Matches/" + key.MatchKey + "/MatchStats/Umpire/")
-            .set(this.captains.umpire);
-        this.data.object("ClubParams/LiveMatchState/matchPtr")
-            .set(key.MatchKey);
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__umpire_umpire__["a" /* UmpirePage */]);
     };
     return CreatePage;
 }());
 CreatePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-create',template:/*ion-inline-start:"/Users/Aman/Desktop/dragons1/src/pages/createMatch/createMatch.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu" ></ion-icon>\n        </button>\n        <ion-title class="bar">Create</ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n    <ion-fab right bottom>\n        <button ion-fab color="white"><ion-icon name="add"></ion-icon></button>\n    </ion-fab>\n    <ion-list>\n        <ion-list-header text-center class="headfont"> Create Match </ion-list-header>\n        <ion-item>\n            <ion-label floating>Match Key</ion-label>\n            <ion-input type="text"[(ngModel)] = "key.MatchKey"></ion-input>\n        </ion-item>\n\n        <ion-item>\n                <ion-label floating>Overs</ion-label>\n                <ion-input type="text"[(ngModel)] = "score.numOfOvers"></ion-input>\n        </ion-item>\n\n        <ion-item>\n            <ion-label floating>Umpire</ion-label>\n            <ion-input type="text"[(ngModel)] = "captains.umpire"></ion-input>\n        </ion-item>\n\n\n        <ion-item>\n            <ion-label floating>Home Team Captain Jersey Number</ion-label>\n            <ion-input type="text"[(ngModel)] = "captains.Homecaptain"></ion-input>\n        </ion-item>\n\n        <ion-item>\n            <ion-label floating>Away Team Captain JerseyNumber</ion-label>\n            <ion-input type="text"[(ngModel)] = "captains.Awaycaptain"></ion-input>\n        </ion-item>\n\n        <ion-item>\n            <ion-label floating>How many players</ion-label>\n            <ion-input type="text"[(ngModel)] = "key.numPlayers"></ion-input>\n        </ion-item>\n\n\n    </ion-list>\n\n    <div padding>\n        <button ion-button  type="button" (click)="create(key,captains)">Start Match</button>\n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/Aman/Desktop/dragons1/src/pages/createMatch/createMatch.html"*/
+        selector: 'page-create',template:/*ion-inline-start:"/Users/Aman/Desktop/dragons1/src/pages/createMatch/createMatch.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu" ></ion-icon>\n        </button>\n        <ion-title class="bar">Create</ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n    <ion-fab right bottom>\n        <button ion-fab color="white"><ion-icon name="add"></ion-icon></button>\n    </ion-fab>\n    <ion-list>\n        <ion-list-header text-center class="headfont"> Create Match </ion-list-header>\n        <ion-item>\n            <ion-label floating>Match Key</ion-label>\n            <ion-input type="number"[(ngModel)] = "key.MatchKey"></ion-input>\n        </ion-item>\n\n        <ion-item>\n                <ion-label floating>Overs</ion-label>\n                <ion-input type="text"[(ngModel)] = "score.numOfOvers"></ion-input>\n        </ion-item>\n\n        <ion-item>\n            <ion-label floating>Umpire</ion-label>\n            <ion-input type="text"[(ngModel)] = "captains.umpire"></ion-input>\n        </ion-item>\n\n\n        <ion-item>\n            <ion-label floating>Home Team Captain Jersey Number</ion-label>\n            <ion-input type="text"[(ngModel)] = "captains.Homecaptain"></ion-input>\n        </ion-item>\n\n        <ion-item>\n            <ion-label floating>Away Team Captain JerseyNumber</ion-label>\n            <ion-input type="text"[(ngModel)] = "captains.Awaycaptain"></ion-input>\n        </ion-item>\n\n        <ion-item>\n            <ion-label floating>How many players</ion-label>\n            <ion-input type="text"[(ngModel)] = "key.numPlayers"></ion-input>\n        </ion-item>\n\n\n    </ion-list>\n\n    <div padding>\n        <button ion-button  type="button" (click)="create(key,captains)">Start Match</button>\n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/Aman/Desktop/dragons1/src/pages/createMatch/createMatch.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */]])
 ], CreatePage);
@@ -772,7 +806,7 @@ SignInPage.jersey_num = 0;
 SignInPage.emailId = "";
 SignInPage = SignInPage_1 = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-signIn',template:/*ion-inline-start:"/Users/Aman/Desktop/dragons1/src/pages/signIn/signIn.html"*/'<ion-content padding>\n<ion-fab right bottom>\n<button  class="ball" ion-fab color="secondary" large (click)="goTohome()"><ion-icon color="live" name="tennisball"></ion-icon></button>\n</ion-fab>\n\n<div text-center>\n	<img src="assets/img/Welcome.jpg" />\n	<h1 color="secondary"> Davis Dragons®\n	</h1>\n	<h3 color="live"> The Official App for the Cricket Club at UC Davis.\n    </h3>\n\n\n    <button ion-button large  color="danger" round (click)="login5()" >\n       &nbsp; Login with Facebook\n    </button>\n\n  <ion-item *ngIf="userProfile">\n    <ion-avatar (click)="isloggedin()" item-left>\n      <img [src]="userProfile.photoURL">\n    </ion-avatar>\n    <h2 (click)="isloggedin()">{{ userProfile.displayName }}</h2>\n    <h3>There it is: {{ userProfile.email }}</h3>\n    <ion-icon name="remove" item-right (click)="logout()"></ion-icon>\n  </ion-item>\n</div>\n</ion-content>\n'/*ion-inline-end:"/Users/Aman/Desktop/dragons1/src/pages/signIn/signIn.html"*/
+        selector: 'page-signIn',template:/*ion-inline-start:"/Users/Aman/Desktop/dragons1/src/pages/signIn/signIn.html"*/'<ion-content padding>\n<ion-fab right top>\n<button  class="ball" ion-fab color="secondary" large (click)="goTohome()"><ion-icon color="live" name="tennisball"></ion-icon></button>\n</ion-fab>\n\n<div text-center>\n	<img src="assets/img/Welcome.jpg" />\n	<h1 color="secondary"> Davis Dragons®\n	</h1>\n	<h3 color="live"> The Official App for the Cricket Club at UC Davis.\n    </h3>\n\n\n    <button ion-button large  color="danger" round (click)="login5()" >&nbsp; Login with Facebook</button>\n    <button ion-button large  color="danger" round (click)="goTohome()" > Guest login </button>\n\n  <ion-item *ngIf="userProfile">\n    <ion-avatar (click)="isloggedin()" item-left>\n      <img [src]="userProfile.photoURL">\n    </ion-avatar>\n    <h2 (click)="isloggedin()">{{ userProfile.displayName }}</h2>\n    <h3>There it is: {{ userProfile.email }}</h3>\n    <ion-icon name="remove" item-right (click)="logout()"></ion-icon>\n  </ion-item>\n</div>\n</ion-content>\n'/*ion-inline-end:"/Users/Aman/Desktop/dragons1/src/pages/signIn/signIn.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_google_plus__["a" /* GooglePlus */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_facebook__["a" /* Facebook */]])
@@ -1633,6 +1667,7 @@ var MyApp = (function () {
             { title: 'Search Player', component: __WEBPACK_IMPORTED_MODULE_7__pages_Search_search__["a" /* SearchPage */] },
         ];
         this.pages_3 = [
+            { title: 'Home', component: __WEBPACK_IMPORTED_MODULE_8__pages_home_home__["a" /* HomePage */] },
             { title: 'Spectator', component: __WEBPACK_IMPORTED_MODULE_9__pages_spectator_spectator__["a" /* SpectatorPage */] },
         ];
         this.pages_4 = [
@@ -1699,7 +1734,7 @@ __decorate([
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Nav */])
 ], MyApp.prototype, "nav", void 0);
 MyApp = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/Users/Aman/Desktop/dragons1/src/app/app.html"*/'<ion-menu [content]="content">\n  <ion-header>\n    <ion-toolbar>\n      <div center>\n      <ion-avatar>\n      <img style=\'width: 25%; display: block; margin: 0 auto;\' src="assets/img/Welcome.jpg">\n    </ion-avatar>\n      </div>\n     <ion-title text-center>Davis Dragons\n      </ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content *ngIf="access_val == null">\n      <ion-list>\n        <button menuClose ion-item *ngFor="let p of pages_0" (click)="openPage(p)">\n          {{p.title}}\n        </button>\n      </ion-list>\n    </ion-content>\n\n  <ion-content *ngIf="access_val == 1">\n      <ion-list>\n        <button menuClose ion-item *ngFor="let p of pages_1" (click)="openPage(p)">\n          {{p.title}}\n        </button>\n      </ion-list>\n    </ion-content>\n\n    <ion-content *ngIf="access_val == 2">\n        <ion-list>\n          <button menuClose ion-item *ngFor="let p of pages_2" (click)="openPage(p)">\n            {{p.title}}\n          </button>\n        </ion-list>\n      </ion-content>\n\n      <ion-content *ngIf="access_val == 3">\n          <ion-list>\n            <button menuClose ion-item *ngFor="let p of pages_3" (click)="openPage(p)">\n              {{p.title}}\n            </button>\n          </ion-list>\n        </ion-content>\n\n        <ion-content *ngIf="access_val == 4">\n            <ion-list>\n              <button menuClose ion-item *ngFor="let p of pages_4" (click)="openPage(p)">\n                {{p.title}}\n              </button>\n            </ion-list>\n          </ion-content>\n\n        <ion-content *ngIf="access_val == 5">\n            <ion-list>\n                <button menuClose ion-item *ngFor="let p of pages_4" (click)="openPage(p)">\n                    {{p.title}}\n                </button>\n            </ion-list>\n        </ion-content>\n\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"/Users/Aman/Desktop/dragons1/src/app/app.html"*/
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/Users/Aman/Desktop/dragons1/src/app/app.html"*/'<ion-menu [content]="content">\n  <ion-header>\n    <ion-toolbar>\n      <div center>\n      <ion-avatar>\n      <img style=\'width: 25%; display: block; margin: 0 auto;\' src="assets/img/Welcome.jpg">\n    </ion-avatar>\n      </div>\n     <ion-title text-center>Davis Dragons\n      </ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content *ngIf="access_val == null">\n      <ion-list>\n        <button menuClose ion-item *ngFor="let p of pages_0" (click)="openPage(p)">\n          {{p.title}}\n        </button>\n      </ion-list>\n    </ion-content>\n\n  <ion-content *ngIf="access_val == 0">\n    <ion-list>\n      <button menuClose ion-item *ngFor="let p of pages_0" (click)="openPage(p)">\n        {{p.title}}\n      </button>\n    </ion-list>\n  </ion-content>\n\n  <ion-content *ngIf="access_val == 1">\n      <ion-list>\n        <button menuClose ion-item *ngFor="let p of pages_1" (click)="openPage(p)">\n          {{p.title}}\n        </button>\n      </ion-list>\n    </ion-content>\n\n    <ion-content *ngIf="access_val == 2">\n        <ion-list>\n          <button menuClose ion-item *ngFor="let p of pages_2" (click)="openPage(p)">\n            {{p.title}}\n          </button>\n        </ion-list>\n      </ion-content>\n\n      <ion-content *ngIf="access_val == 3">\n          <ion-list>\n            <button menuClose ion-item *ngFor="let p of pages_3" (click)="openPage(p)">\n              {{p.title}}\n            </button>\n          </ion-list>\n        </ion-content>\n\n        <ion-content *ngIf="access_val == 4">\n            <ion-list>\n              <button menuClose ion-item *ngFor="let p of pages_4" (click)="openPage(p)">\n                {{p.title}}\n              </button>\n            </ion-list>\n          </ion-content>\n\n        <ion-content *ngIf="access_val == 5">\n            <ion-list>\n                <button menuClose ion-item *ngFor="let p of pages_4" (click)="openPage(p)">\n                    {{p.title}}\n                </button>\n            </ion-list>\n        </ion-content>\n\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"/Users/Aman/Desktop/dragons1/src/app/app.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_5_angularfire2_database__["a" /* AngularFireDatabase */]])
 ], MyApp);
