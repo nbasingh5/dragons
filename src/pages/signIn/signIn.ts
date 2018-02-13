@@ -39,6 +39,7 @@ export class SignInPage {
 		this.fireauth.onAuthStateChanged( user => {
 			if (user){
 				this.userProfile = user;
+				alert("new: "+ user.email)
 			} else {
 				this.userProfile = null;
 			}
@@ -112,106 +113,34 @@ export class SignInPage {
 	}
 
 
-	login(){
-
-        this.facebook.login(['public_profile', 'user_friends', 'email'])
-            .then((res: FacebookLoginResponse) => console.log('Logged into Facebook!'+ JSON.stringify(res), this.userProf = res))
-            .catch(e => console.log('Error logging into Facebook', e));
-
-        alert("new"+this.userProf);
-
-
-    }
-
-    login5(){
-	    this.facebook.login(["email"]).then((loginResponse) =>{
+    login5()
+	{
+	    this.facebook.login(["email"]).then((loginResponse) =>
+		{
 
             let cred = firebase.auth.FacebookAuthProvider.credential(loginResponse.authResponse.accessToken);
-            //alert("saaaaaaaaaaaaaaa "+ JSON.stringify(cred));
-	        firebase.auth().signInWithCredential(cred).then((info)=> {
+	        firebase.auth().signInWithCredential(cred).then((info)=>
+			{
 	                this.userProf  = info;
-                    console.log("heAAAAAAAAAAAAAAYYYYYYYYYYYYYYYYYY "+ info.emailId);
-                    alert(JSON.stringify(info.name));
-                this.navCtrl.push(AddPage, {playerInfo: this.userProfile});
-
-            }).catch(function (error) {
-                console.log("nooooooooooooooooooo" + JSON.stringify(error.name));
-
+	                //alert("lollllllll"+ JSON.stringify(info));
+	                this.check(this.userProfile);
             })
+				.catch(function (error)
+				{
+                    this.check(this.userProfile);
+                	alert('Firebase auth failed' + error);
+				})
         })
-
-
-
-    }
-
-	login2(){
-        var provider = new firebase.auth.FacebookAuthProvider();
-
-        firebase.auth().signInWithRedirect(provider).then(()=>{
-            firebase.auth().getRedirectResult().then((result)=>{
-                alert(JSON.stringify(result));
-            }).catch(function (error) {
-                alert(JSON.stringify(error))
-            })
-        })
-
-
     }
 
 
-    login3(){
-        var provider = new firebase.auth.FacebookAuthProvider();
 
-        firebase.auth().signInWithPopup(provider).then(function(result) {
-
-            alert(JSON.stringify(result));
-            // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-            var token = result.credential.accessToken;
-            // The signed-in user info.
-
-            var user = result.user;
-            this.userProf = user;
-
-            // ...
-
-        }).catch(function(error) {
-            // Handle Errors here.
-            var errorCode = error.name;
-            var errorMessage = error.message;
-            // The email of the user's account used.
-            var email = error.message;
-            // The firebase.auth.AuthCredential type that was used.
-            var credential = error.stack;
-            // ...
-        });
-    }
-
-    login4(){
-
-        var provider = new firebase.auth.FacebookAuthProvider();
-
-        firebase.auth().signInWithRedirect(provider);
-
-        firebase.auth().getRedirectResult().then(function(result) {
-            if (result.credential) {
-                // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-                var token = result.credential.accessToken;
-                // ...
-            }
-            // The signed-in user info.
-            var user = result.user;
-        }).catch(function(error) {
-        });
-
-
-
-
-	}
 
 	check(userprofile: any)
 	{
 
-        this.name = this.data.list("/ClubParams/ClubRoster",{
+        this.name = this.data.list("/ClubParams/ClubRoster",
+			{
             query: {
                 orderByChild: "email",
                 equalTo: userprofile.email
@@ -219,23 +148,19 @@ export class SignInPage {
 
 		});
 
-		// this.j_no = this.database.list("/ClubParams/ClubRoster");
-		//alert(SignInPage.emailId);
-
-		//alert("j_no: " + this.j_no);
-		//alert(this.accessNo$);
         this.name.subscribe(data =>
         {
-            if(data.length == 0 && !userprofile) {
-                alert('User does not exist');
-                console.log(data);
-                this.navCtrl.push(AddPage, {playerInfo: userprofile});
+            if(data.length == 0)
+            {
+                alert('User does not exist'+ data);
 
-            } else {
-                alert('User does exist');
+                this.navCtrl.push(AddPage, {playerInfo: userprofile});
+            } 	else
+				{
+                alert('User does exist' + data);
                 console.log(data);
                 this.navCtrl.push(HomePage);
-            }
+            	}
         });
 	}
 
@@ -243,7 +168,7 @@ export class SignInPage {
 	{
 		alert("Are you sure you want to remove this account forever?");
 		this.userProfile= null;
-		this.googleplus.logout();
+		this.facebook.logout();
 		this.fireauth.signOut();
 		// this.googleauth();
 		// this.navCtrl.push(MyApp);
@@ -266,6 +191,12 @@ export class SignInPage {
 
     goToSearch() {
         this.navCtrl.push(SearchPage);
+    }
+
+    isloggedin(){
+
+        alert("New: "+ this.userProfile.email);
+
     }
 
 }

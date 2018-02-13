@@ -31,15 +31,14 @@ export class AddPage {
         user = this.navPrams.get('playerInfo');
         //console.log(user.email);
 
-        //this.player.email = user.email;
-        //this.player.picture = user.photoURL;
-        //this.player.picture = null;
+        this.player.email = user.email;
+        this.player.picture = user.photoURL;
+        this.player.name = user.displayName;
 
-        console.log("heyyyyyyyyyyyyyyyyyyyYYYYYYYYYYYYYYYYYY "+ user.email);
-        alert("heyyyyyyyyyyyyyyyyyyyYYYYYYYYYYYYYYYYYY "+ user.email);
+        alert("hey "+ user.email);
 
-        this.player.picture = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Iverson_from_behind.jpg/180px-Iverson_from_behind.jpg";
-        this.player.email= "nbadavis@gmail.com";
+        //this.player.picture = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Iverson_from_behind.jpg/180px-Iverson_from_behind.jpg";
+        //this.player.email= "nbadavis@gmail.com";
 
         //this.userRef$ = this.data.object('Players');
 
@@ -59,9 +58,10 @@ export class AddPage {
         this.player.fours = 0;
         this.player.sixes = 0;
         this.player.runs = 0;
+        this.player.accesslevel = 2;
 
-        this.player.picture = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Iverson_from_behind.jpg/180px-Iverson_from_behind.jpg";
-        this.player.email= "nbadavis@gmail.com";
+        //this.player.picture = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Iverson_from_behind.jpg/180px-Iverson_from_behind.jpg";
+        //this.player.email= "nbadavis@gmail.com";
 
 
         this.name = this.data.list("/ClubParams/ClubRoster/",{
@@ -78,9 +78,6 @@ export class AddPage {
             if(data.length == 1) {
 
                 alert("Jersey Number is already taken enter a diffrent one");
-
-
-
             }
             if (data.length == 0){
 
@@ -88,7 +85,6 @@ export class AddPage {
                 .set(player);
 
                 this.player = {} as player;
-
             }
         });
     }
